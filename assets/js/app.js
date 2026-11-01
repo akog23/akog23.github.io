@@ -1,4 +1,4 @@
-import { getRepos, getReadme } from './github.js';
+import { getRepos, getReadme } from './github.js?v=20261101b';
 
 /* =========================================================================
    Interface strings (the content itself lives in data/content.json)

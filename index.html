@@ -31,7 +31,8 @@
             document.documentElement.setAttribute('data-theme', t);
         })();
     </script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <style>[data-theme="dark"] .logo-for-light, [data-theme="light"] .logo-for-dark { display: none; }</style>
+    <link rel="stylesheet" href="assets/css/style.css?v=20261101b">
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
 </head>
@@ -187,7 +188,7 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script src="assets/js/app.js" type="module"></script>
+    <script src="assets/js/app.js?v=20261101b" type="module"></script>
 </body>
 
 </html>

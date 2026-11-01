@@ -34,6 +34,10 @@ Tudo fica em `data/content.json`. Textos traduzíveis usam `{ "pt": "...", "en":
 
 Textos fixos da interface (menu, botões, títulos) ficam no objeto `UI` no início de `assets/js/app.js`.
 
+## Cache dos navegadores
+
+`index.html` carrega `style.css` e `app.js` com `?v=...` no final. Ao mudar CSS ou JS, troque esse número (ex.: `?v=20261101b` → `?v=20261102a`) para que quem já visitou o site receba a versão nova.
+
 ## Rodar localmente
 
 ```sh
