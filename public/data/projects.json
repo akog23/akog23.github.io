@@ -1,0 +1,86 @@
+{
+  "alias": [
+    {
+      "alias": "MackEstagios",
+      "title": "MackEstágios",
+      "featured": true,
+      "order": 1,
+      "stack": "Java · Spring Boot · Next.js",
+      "description": "Internship management portal: Spring Boot REST API with Spring Security + JWT, JPA and PostgreSQL/H2, covering students, companies, job postings, applications, evaluations and an admin dashboard. Next.js/React front-end."
+    },
+    {
+      "alias": "P2_CLOUD",
+      "title": "VetCare — Cloud Clinic System",
+      "featured": true,
+      "order": 2,
+      "stack": "AWS · SQL · HTML",
+      "description": "Veterinary clinic management system (owners, pets and appointments) deployed on AWS Learner Lab, with the landing page hosted on Amazon S3. Includes spec, architecture diagram, ER model, Security Groups and ADRs. Group project."
+    },
+    {
+      "alias": "NeuroAIM",
+      "title": "NeuroAIM",
+      "featured": true,
+      "order": 3,
+      "stack": "Java · libGDX",
+      "description": "Java game built with libGDX to support motor rehabilitation through gamified, interactive exercises."
+    },
+    {
+      "alias": "PokedeX",
+      "title": "Pokédex iOS",
+      "order": 4,
+      "stack": "Swift · SwiftUI",
+      "description": "iOS app in SwiftUI that consumes PokéAPI to list the first 151 Pokémon, with type filters and a favorites manager."
+    },
+    {
+      "alias": "PS2",
+      "title": "Systems Programming II Labs",
+      "order": 5,
+      "stack": "Java",
+      "description": "Java coursework covering exceptions, abstract classes, interfaces, JDBC database access, web services and a library management system."
+    },
+    {
+      "alias": "DS2",
+      "title": "E-commerce System Design",
+      "order": 6,
+      "stack": "UML · Figma",
+      "description": "Systems development project: use case, domain and component diagrams, critical use cases, supplementary specification and screen mockups (home, product, cart, checkout)."
+    },
+    {
+      "alias": "WebMobile",
+      "title": "Home Services Landing Page",
+      "order": 7,
+      "stack": "HTML · CSS · JS",
+      "description": "Responsive landing page for a home services marketplace (carpenters, electricians, painters, flooring), built from a wireframe."
+    },
+    {
+      "alias": "CineMack",
+      "title": "CineMack",
+      "order": 8,
+      "stack": "Python",
+      "description": "Command-line cinema ticketing system in Python: sessions, seat maps, ticket types (full, half, VIP) and revenue reports."
+    },
+    {
+      "alias": "SakuraCoffee",
+      "title": "Sakura Coffee",
+      "order": 9,
+      "stack": "HTML · CSS",
+      "description": "Website for a fictional coffee shop with home, menu and contact form pages."
+    }
+  ],
+  "extra": [
+    {
+      "title": "Auditório Inteligente",
+      "featured": false,
+      "stack": "JavaScript · Supabase",
+      "description": "Space and event management for an auditorium: space and event registration with schedule-conflict checking, plus an 8-screen prototype (login, check-in, attendance, reports). Group project for PPADS.",
+      "url": "https://github.com/ppads-2026s2"
+    },
+    {
+      "title": "Back-office Automation Suite",
+      "featured": false,
+      "stack": "Python · Playwright · VBA",
+      "description": "Around 10 internal automations built at Huawei: Playwright bots that export ERP and sales reports and VBA macros that refresh internal databases — cutting 3–4 hour routines to 10 minutes or less. Internal code, not public.",
+      "url": null
+    }
+  ]
+}

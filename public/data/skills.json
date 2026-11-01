@@ -1,0 +1,32 @@
+[
+  {
+    "category": "Languages",
+    "icon": "code",
+    "skills": ["Java", "Python", "JavaScript", "SQL", "Swift", "VBA"]
+  },
+  {
+    "category": "Back-end",
+    "icon": "dns",
+    "skills": ["Spring Boot", "Spring Security + JWT", "Spring Data JPA", "REST APIs"]
+  },
+  {
+    "category": "Front-end",
+    "icon": "web",
+    "skills": ["React", "Next.js", "HTML5", "CSS", "SwiftUI"]
+  },
+  {
+    "category": "Data & Cloud",
+    "icon": "cloud",
+    "skills": ["PostgreSQL", "H2", "Supabase", "AWS (S3, Learner Lab)"]
+  },
+  {
+    "category": "Automation",
+    "icon": "bolt",
+    "skills": ["Python + Playwright", "Excel VBA macros", "ERP report exports", "Back-office workflows"]
+  },
+  {
+    "category": "Tools & Networking",
+    "icon": "construction",
+    "skills": ["Git & GitHub", "Figma", "Draw.io", "Cisco CCNA", "Generative AI tools"]
+  }
+]

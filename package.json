@@ -1,0 +1,21 @@
+{
+  "name": "isaac-portfolio",
+  "version": "1.0.0",
+  "description": "Portfólio pessoal de Isaac Koga — HTML, Tailwind e JavaScript puro, com dados em JSON e projetos via API do GitHub.",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./src/css/input.css -o ./public/assets/style.css --minify",
+    "dev": "tailwindcss -i ./src/css/input.css -o ./public/assets/style.css --watch",
+    "serve": "npx serve public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akog777/akog777.github.io.git"
+  },
+  "author": "Isaac Luiz Koga Carone",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "tailwindcss": "^3.4.17"
+  }
+}

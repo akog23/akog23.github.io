@@ -1,0 +1,49 @@
+{
+  "institution": "Universidade Presbiteriana Mackenzie",
+  "location": "São Paulo, SP, Brazil",
+  "degree": "Bachelor of Information Systems",
+  "start": "2024-08-01",
+  "end": "2028-06-30",
+  "scale": 10,
+  "terms": [
+    {
+      "term": "2026.2",
+      "label": "Current semester",
+      "courses": [
+        {
+          "name": "Computação em Nuvem",
+          "grade": null,
+          "project": "VetCare on AWS"
+        },
+        {
+          "name": "PPADS",
+          "grade": null,
+          "project": "Auditório Inteligente"
+        }
+      ],
+      "current": true
+    },
+    {
+      "term": "2025.2",
+      "label": "Semester",
+      "courses": [
+        {
+          "name": "Programação de Sistemas II",
+          "grade": null,
+          "project": "Java labs: JDBC, interfaces, web services"
+        }
+      ]
+    },
+    {
+      "term": "2025.1",
+      "label": "Semester",
+      "courses": [
+        {
+          "name": "Engenharia de Software",
+          "grade": null,
+          "project": "Use case & activity diagrams"
+        }
+      ]
+    }
+  ]
+}

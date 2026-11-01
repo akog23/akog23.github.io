@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-secondary text-neutral font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-neutral;
+  }
+  ::selection { @apply bg-primary/30 text-white; }
+}
+
+@layer components {
+  .card {
+    @apply bg-white/[0.04] backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:border-primary/50 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-glow;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary;
+  }
+  .tag {
+    @apply bg-white/5 border border-white/10 text-neutral/80 px-3 py-1 rounded-lg text-xs font-mono;
+  }
+  .page-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 font-heading border-b border-white/10 pb-4;
+  }
+  .nav-link {
+    @apply text-neutral/60 hover:text-primary transition-colors font-heading text-sm uppercase tracking-wider font-semibold;
+  }
+  .nav-link.active { @apply text-white; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

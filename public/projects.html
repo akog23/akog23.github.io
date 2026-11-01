@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Isaac Koga</title>
+    <meta name="description" content="Isaac Koga — Information Systems student at Mackenzie, Trainee at Management Solutions. Full-stack development, Java/Spring Boot, Python and process automation.">
+    <meta property="og:title" content="Projects — Isaac Koga">
+    <meta property="og:description" content="Isaac Koga — Information Systems student at Mackenzie, Trainee at Management Solutions. Full-stack development, Java/Spring Boot, Python and process automation.">
+    <meta name="theme-color" content="#0B0D12">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+</head>
+
+<body data-page="projects" class="flex flex-col min-h-screen bg-secondary relative overflow-x-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-hero-glow blur-[100px] rounded-full opacity-50 pointer-events-none -z-10 animate-pulse-slow"></div>
+
+    <header id="site-header"></header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        <h1 class="page-title"><span class="text-gradient">Projects</span></h1>
+        <div id="projects-loading" class="text-neutral/70 flex items-center gap-2 mb-8 font-mono text-sm">
+            <svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg><span>Fetching repositories from GitHub...</span>
+        </div>
+        <div id="projects-notice" class="hidden mb-6 text-sm text-tertiary/90 bg-tertiary/10 border border-tertiary/20 rounded-lg px-4 py-3">
+            GitHub is not responding right now, so this list comes from the curated project data.
+        </div>
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="./js/main.js" type="module"></script>
+</body>
+
+</html>
