@@ -1,4 +1,4 @@
-import { getRepos, getReadme } from './github.js?v=20261101b';
+import { getRepos, getReadme } from './github.js?v=20261101c';
 
 /* =========================================================================
    Interface strings (the content itself lives in data/content.json)
@@ -435,6 +435,7 @@ function bindNav() {
     $('#theme-btn').addEventListener('click', () => {
         const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
+        $('#logo-img').src = `assets/img/logo-${next}.png`;
         $('meta[name="theme-color"]').setAttribute('content', next === 'dark' ? '#0B0C0F' : '#FAFAF9');
         store.set('theme', next);
     });
