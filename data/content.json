@@ -1,0 +1,532 @@
+{
+  "profile": {
+    "name": "Isaac Koga Carone",
+    "shortName": "Isaac Koga",
+    "handle": "akog777",
+    "github": "akog777",
+    "linkedin": "https://www.linkedin.com/in/iskoga",
+    "email": "akog.sac@gmail.com",
+    "location": "São Paulo, SP — Brasil",
+    "coords": "23.55°S · 46.63°W",
+    "timezone": "America/Sao_Paulo",
+    "status": {
+      "pt": "Trainee @ Management Solutions",
+      "en": "Trainee @ Management Solutions"
+    },
+    "roles": {
+      "pt": [
+        "Desenvolvedor Full-Stack",
+        "React · Java · Python",
+        "Automação de Processos",
+        "Estudante de Sistemas de Informação"
+      ],
+      "en": [
+        "Full-Stack Developer",
+        "React · Java · Python",
+        "Process Automation",
+        "Information Systems Student"
+      ]
+    },
+    "tagline": {
+      "pt": "Gosto de transformar processos manuais e bagunçados em sistemas limpos e escaláveis — de interfaces em React a back-ends em Spring Boot e automações em Python que devolvem horas ao time.",
+      "en": "I like turning messy manual processes into clean, scalable systems — from React interfaces to Spring Boot back-ends and Python automations that give hours back to the team."
+    },
+    "summary": {
+      "pt": "Estudante de Sistemas de Informação no Mackenzie com experiência em desenvolvimento full-stack (React.js, Java/Spring Boot, APIs REST) e em automação de processos em ambiente corporativo. Perfil analítico, com base sólida em SQL, lógica de programação e troubleshooting — e uso de IA generativa para acelerar entregas.",
+      "en": "Information Systems student at Mackenzie with hands-on experience in full-stack development (React.js, Java/Spring Boot, REST APIs) and corporate process automation. Analytical profile with a solid base in SQL, programming logic and troubleshooting — using generative AI to ship faster."
+    }
+  },
+  "metrics": [
+    {
+      "value": 10,
+      "prefix": "~",
+      "suffix": "",
+      "label": {
+        "pt": "automações em produção (Python/VBA)",
+        "en": "automations in production (Python/VBA)"
+      }
+    },
+    {
+      "value": 10,
+      "prefix": "≤",
+      "suffix": "min",
+      "label": {
+        "pt": "para rotinas que levavam 3–4 h",
+        "en": "for routines that used to take 3–4 h"
+      }
+    },
+    {
+      "value": 222,
+      "prefix": "",
+      "suffix": "h",
+      "label": {
+        "pt": "em certificações (Cisco + Swift)",
+        "en": "of certifications (Cisco + Swift)"
+      }
+    },
+    {
+      "value": 0,
+      "prefix": "",
+      "suffix": "",
+      "id": "repos",
+      "fallback": 9,
+      "label": {
+        "pt": "repositórios públicos no GitHub",
+        "en": "public repositories on GitHub"
+      }
+    }
+  ],
+  "experience": [
+    {
+      "company": "Management Solutions",
+      "role": {
+        "pt": "Trainee",
+        "en": "Trainee"
+      },
+      "period": {
+        "pt": "Out 2026 — Atual",
+        "en": "Oct 2026 — Present"
+      },
+      "current": true,
+      "type": {
+        "pt": "Consultoria",
+        "en": "Consulting"
+      },
+      "bullets": {
+        "pt": [
+          "Programa de trainee em consultoria internacional, atuando em projetos de negócio e tecnologia para clientes."
+        ],
+        "en": [
+          "Trainee program at an international consulting firm, working on business and technology projects for clients."
+        ]
+      },
+      "tags": [
+        "Consulting",
+        "Business & Tech"
+      ]
+    },
+    {
+      "company": "Huawei",
+      "role": {
+        "pt": "Estágio — Analista de Suporte · Contract Fulfillment",
+        "en": "Support Analyst Intern · Contract Fulfillment"
+      },
+      "period": {
+        "pt": "Dez 2025 — 2026",
+        "en": "Dec 2025 — 2026"
+      },
+      "current": false,
+      "type": {
+        "pt": "Telecom",
+        "en": "Telecom"
+      },
+      "bullets": {
+        "pt": [
+          "Suporte a sistemas e troubleshooting: resolução de incidentes em sistemas transacionais, na interface entre TI e Negócios (DWDM/Telecom).",
+          "Automação & dados: cerca de 10 scripts e macros (Python/Playwright e VBA) para rotinas de backoffice e bases de POs/Contratos — processos de 3–4 h passaram a levar no máximo 10 min.",
+          "Otimização de processos: mapeamento técnico de gargalos operacionais e melhorias de fluxo, reduzindo o retrabalho da equipe."
+        ],
+        "en": [
+          "Systems support & troubleshooting: resolved incidents in transactional systems, bridging IT and Business (DWDM/Telecom).",
+          "Automation & data: about 10 scripts and macros (Python/Playwright and VBA) for back-office routines and PO/Contract databases — 3–4 h processes now take 10 min at most.",
+          "Process optimization: technical mapping of operational bottlenecks and workflow improvements, reducing team rework."
+        ]
+      },
+      "tags": [
+        "Python",
+        "Playwright",
+        "VBA",
+        "SQL",
+        "Troubleshooting"
+      ]
+    },
+    {
+      "company": "AllCars4U",
+      "role": {
+        "pt": "Desenvolvedor Full-Stack",
+        "en": "Full-Stack Developer"
+      },
+      "period": {
+        "pt": "Mar 2025 — Mai 2025",
+        "en": "Mar 2025 — May 2025"
+      },
+      "current": false,
+      "type": {
+        "pt": "Web",
+        "en": "Web"
+      },
+      "bullets": {
+        "pt": [
+          "Aplicações web responsivas com React.js e JavaScript, com componentização e gerenciamento de estado da interface.",
+          "Integração de sistemas e consumo de dados via APIs RESTful, estruturando chamadas e tratamento de respostas.",
+          "Testes e debugging (React/SQL), reduzindo bugs reportados em produção."
+        ],
+        "en": [
+          "Responsive web apps with React.js and JavaScript, using components and UI state management.",
+          "Systems integration and data consumption through RESTful APIs, structuring requests and response handling.",
+          "Testing and debugging (React/SQL), reducing bugs reported in production."
+        ]
+      },
+      "tags": [
+        "React.js",
+        "JavaScript",
+        "REST APIs",
+        "SQL"
+      ]
+    },
+    {
+      "company": "Associação Deseret",
+      "role": {
+        "pt": "Missionário (Trabalho Voluntário)",
+        "en": "Missionary (Volunteer Work)"
+      },
+      "period": {
+        "pt": "Mar 2022 — Mar 2024",
+        "en": "Mar 2022 — Mar 2024"
+      },
+      "current": false,
+      "type": {
+        "pt": "Voluntariado",
+        "en": "Volunteer"
+      },
+      "bullets": {
+        "pt": [
+          "Liderança operacional de equipes multiculturais, com delegação de tarefas, planejamento logístico e acompanhamento contínuo de métricas de desempenho."
+        ],
+        "en": [
+          "Operational leadership of multicultural teams: task delegation, logistics planning and continuous tracking of performance metrics."
+        ]
+      },
+      "tags": [
+        "Leadership",
+        "Logistics",
+        "Multicultural teams"
+      ]
+    }
+  ],
+  "education": {
+    "institution": "Universidade Presbiteriana Mackenzie",
+    "degree": {
+      "pt": "Bacharelado em Sistemas de Informação",
+      "en": "B.Sc. in Information Systems"
+    },
+    "start": "2024-06-01",
+    "end": "2028-06-30",
+    "courses": [
+      "Computação em Nuvem",
+      "PPADS",
+      "Programação de Sistemas II",
+      "Engenharia de Software"
+    ],
+    "languages": [
+      {
+        "name": {
+          "pt": "Português",
+          "en": "Portuguese"
+        },
+        "level": {
+          "pt": "Nativo",
+          "en": "Native"
+        },
+        "pct": 100
+      },
+      {
+        "name": {
+          "pt": "Inglês",
+          "en": "English"
+        },
+        "level": {
+          "pt": "Intermediário",
+          "en": "Intermediate"
+        },
+        "pct": 60
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "lang",
+      "title": {
+        "pt": "Linguagens",
+        "en": "Languages"
+      },
+      "items": [
+        "Python",
+        "Java",
+        "JavaScript",
+        "SQL",
+        "Swift",
+        "VBA"
+      ]
+    },
+    {
+      "id": "fw",
+      "title": {
+        "pt": "Frameworks & Libs",
+        "en": "Frameworks & Libs"
+      },
+      "items": [
+        "React.js",
+        "Spring Boot",
+        "Next.js",
+        "SwiftUI",
+        "libGDX"
+      ]
+    },
+    {
+      "id": "data",
+      "title": {
+        "pt": "Dados & Automação",
+        "en": "Data & Automation"
+      },
+      "items": [
+        "PostgreSQL",
+        "Supabase",
+        "APIs REST",
+        "Playwright",
+        "Excel VBA"
+      ]
+    },
+    {
+      "id": "tools",
+      "title": {
+        "pt": "Cloud & Ferramentas",
+        "en": "Cloud & Tools"
+      },
+      "items": [
+        "AWS",
+        "Git / GitHub",
+        "Figma",
+        "Draw.io",
+        "Pacote Office",
+        "IA Generativa"
+      ]
+    },
+    {
+      "id": "net",
+      "title": {
+        "pt": "Redes & Segurança",
+        "en": "Networking & Security"
+      },
+      "items": [
+        "Cisco CCNA",
+        "Cibersegurança",
+        "Troubleshooting"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "CCNA",
+      "issuer": "Cisco",
+      "hours": 80,
+      "area": "net"
+    },
+    {
+      "title": {
+        "pt": "Cibersegurança",
+        "en": "Cybersecurity"
+      },
+      "issuer": "Cisco",
+      "hours": 70,
+      "area": "net"
+    },
+    {
+      "title": {
+        "pt": "POO (Swift)",
+        "en": "OOP (Swift)"
+      },
+      "issuer": "Swift",
+      "hours": 24,
+      "area": "ios"
+    },
+    {
+      "title": {
+        "pt": "Lógica de Programação (Swift)",
+        "en": "Programming Logic (Swift)"
+      },
+      "issuer": "Swift",
+      "hours": 24,
+      "area": "ios"
+    },
+    {
+      "title": "Foundation iOS",
+      "issuer": "Swift",
+      "hours": 24,
+      "area": "ios"
+    }
+  ],
+  "projects": [
+    {
+      "repo": "MackEstagios",
+      "title": "MackEstágios",
+      "featured": true,
+      "cat": "backend",
+      "stack": [
+        "Java",
+        "Spring Boot",
+        "JWT",
+        "PostgreSQL",
+        "Next.js"
+      ],
+      "desc": {
+        "pt": "Portal de gestão de estágios acadêmicos: API REST em Spring Boot com Spring Security + JWT, JPA e PostgreSQL/H2 — estudantes, empresas, vagas, inscrições, avaliações e dashboard administrativo. Front-end em Next.js/React.",
+        "en": "Academic internship management portal: Spring Boot REST API with Spring Security + JWT, JPA and PostgreSQL/H2 — students, companies, postings, applications, evaluations and an admin dashboard. Next.js/React front-end."
+      }
+    },
+    {
+      "repo": "NeuroAIM",
+      "title": "NeuroAIM",
+      "featured": true,
+      "cat": "game",
+      "stack": [
+        "Java",
+        "libGDX",
+        "Gradle"
+      ],
+      "desc": {
+        "pt": "Jogo em Java (libGDX) para apoiar a reabilitação motora de pessoas que perderam coordenação, com exercícios interativos gamificados.",
+        "en": "Java game (libGDX) supporting motor rehabilitation for people who lost coordination, through gamified interactive exercises."
+      }
+    },
+    {
+      "repo": "P2_CLOUD",
+      "title": "VetCare",
+      "featured": true,
+      "cat": "cloud",
+      "stack": [
+        "AWS",
+        "S3",
+        "SQL",
+        "HTML"
+      ],
+      "desc": {
+        "pt": "Sistema de gestão para clínica veterinária (tutores, pets e consultas) publicado na AWS Learner Lab, com landing page no Amazon S3, especificação, modelo ER, Security Groups e ADRs. Projeto em grupo.",
+        "en": "Veterinary clinic management system (owners, pets, appointments) deployed on AWS Learner Lab, with an Amazon S3 landing page, spec, ER model, Security Groups and ADRs. Group project."
+      }
+    },
+    {
+      "repo": null,
+      "title": {
+        "pt": "Suíte de Automação Backoffice",
+        "en": "Back-office Automation Suite"
+      },
+      "featured": true,
+      "cat": "automation",
+      "stack": [
+        "Python",
+        "Playwright",
+        "VBA"
+      ],
+      "internal": true,
+      "desc": {
+        "pt": "Cerca de 10 automações internas na Huawei: robôs Playwright que exportam relatórios do ERP e de sistemas de vendas e macros VBA que atualizam bases internas. Código interno, não público.",
+        "en": "About 10 internal automations at Huawei: Playwright bots exporting ERP and sales reports and VBA macros refreshing internal databases. Internal code, not public."
+      }
+    },
+    {
+      "repo": null,
+      "title": "Auditório Inteligente",
+      "cat": "web",
+      "url": "https://github.com/ppads-2026s2",
+      "stack": [
+        "JavaScript",
+        "Supabase",
+        "HTML/CSS"
+      ],
+      "desc": {
+        "pt": "Gestão de espaços e eventos de um auditório: cadastro com verificação de conflito de horário e protótipo de 8 telas (login, check-in, presença, relatórios). Projeto em grupo da disciplina PPADS.",
+        "en": "Space and event management for an auditorium: registration with schedule-conflict checks and an 8-screen prototype (login, check-in, attendance, reports). Group project for PPADS."
+      }
+    },
+    {
+      "repo": "PokedeX",
+      "title": "Pokédex iOS",
+      "cat": "mobile",
+      "stack": [
+        "Swift",
+        "SwiftUI",
+        "REST API"
+      ],
+      "desc": {
+        "pt": "App iOS em SwiftUI que consome a PokéAPI para listar os 151 primeiros Pokémon, com filtro por tipo e favoritos.",
+        "en": "SwiftUI iOS app consuming PokéAPI to list the first 151 Pokémon, with type filters and favorites."
+      }
+    },
+    {
+      "repo": "PS2",
+      "title": {
+        "pt": "Programação de Sistemas II",
+        "en": "Systems Programming II"
+      },
+      "cat": "backend",
+      "stack": [
+        "Java",
+        "JDBC",
+        "Web Services"
+      ],
+      "desc": {
+        "pt": "Laboratórios em Java: exceções, classes abstratas, interfaces, acesso a banco com JDBC, web services e sistema de biblioteca.",
+        "en": "Java labs: exceptions, abstract classes, interfaces, JDBC database access, web services and a library system."
+      }
+    },
+    {
+      "repo": "DS2",
+      "title": {
+        "pt": "Design de E-commerce",
+        "en": "E-commerce System Design"
+      },
+      "cat": "web",
+      "stack": [
+        "UML",
+        "Figma"
+      ],
+      "desc": {
+        "pt": "Modelagem de sistema: diagramas de casos de uso, domínio e componentes, especificação complementar e telas (home, produto, carrinho, checkout).",
+        "en": "System modeling: use case, domain and component diagrams, supplementary spec and screens (home, product, cart, checkout)."
+      }
+    },
+    {
+      "repo": "WebMobile",
+      "title": {
+        "pt": "Landing de Serviços",
+        "en": "Home Services Landing"
+      },
+      "cat": "web",
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "desc": {
+        "pt": "Landing page responsiva para um marketplace de serviços domésticos (marceneiro, eletricista, pintor), construída a partir de wireframe.",
+        "en": "Responsive landing page for a home-services marketplace (carpenter, electrician, painter), built from a wireframe."
+      }
+    },
+    {
+      "repo": "CineMack",
+      "title": "CineMack",
+      "cat": "automation",
+      "stack": [
+        "Python"
+      ],
+      "desc": {
+        "pt": "Sistema de bilheteria de cinema em Python no terminal: sessões, mapa de poltronas, tipos de ingresso e relatório de arrecadação.",
+        "en": "Terminal cinema ticketing system in Python: sessions, seat maps, ticket types and revenue report."
+      }
+    },
+    {
+      "repo": "SakuraCoffee",
+      "title": "Sakura Coffee",
+      "cat": "web",
+      "stack": [
+        "HTML",
+        "CSS"
+      ],
+      "desc": {
+        "pt": "Site de uma cafeteria fictícia com páginas de início, cardápio e formulário de contato.",
+        "en": "Website for a fictional coffee shop with home, menu and contact form pages."
+      }
+    }
+  ]
+}

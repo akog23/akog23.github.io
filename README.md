@@ -1,59 +1,51 @@
-# Isaac Koga — Portfolio
+# Isaac Koga — Portfolio v2 (HUD)
 
-Portfólio pessoal feito com **HTML, TailwindCSS e JavaScript puro**. Todo o conteúdo fica em arquivos JSON (`public/data/`) e os projetos são puxados automaticamente da **API do GitHub** (`akog777`), com o README de cada repositório renderizado dentro do site.
+Portfólio de página única com visual futurista (interface tipo HUD): fundo animado com grade em perspectiva e rede de partículas, sequência de boot, nome com efeito glitch, painel de status com relógio de São Paulo, contadores animados, linha do tempo, projetos com filtro e efeito 3D, leitor de README dentro do site e um **terminal interativo** na seção de contato.
 
-> Estrutura inspirada no portfólio [vdidoff](https://github.com/SgT012003/vdidoff) (MPL-2.0), com identidade visual, conteúdo e várias partes do código refeitos.
+Site **bilíngue (PT/EN)**: o idioma inicial segue o navegador do visitante e pode ser trocado no botão do topo (ou com `lang en` / `lang pt` no terminal).
 
-## Páginas
+Feito com **HTML, CSS e JavaScript puro** — não precisa de build, `npm` nem Tailwind.
 
-| Página | Arquivo | Dados |
-| --- | --- | --- |
-| Home (hero, números, skills, projetos em destaque) | `public/index.html` | `profile.json`, `skills.json`, `projects.json` |
-| Experiência (timeline) | `public/experience.html` | `exp.json` |
-| Acadêmico (progresso do curso + notas) | `public/academic.html` | `academic.json` |
-| Certificados + página de detalhe | `public/certifications.html`, `cert-detail.html` | `certs.json` |
-| Projetos (GitHub) + leitura do README | `public/projects.html`, `project-view.html` | `projects.json`, `blacklist.json` |
+## Estrutura
 
-## Como editar o conteúdo
-
-Só mexa nos JSON de `public/data/` — não precisa tocar no HTML.
-
-- **`profile.json`** — nome, título, links (GitHub, LinkedIn, e-mail), texto do topo e os 3 números de destaque.
-- **`exp.json`** — experiências. `highlights` vira a lista de conquistas; `current: true` destaca o cargo atual.
-- **`academic.json`** — `start`/`end` calculam a barra de progresso. Em `terms`, cada semestre tem `courses` com `grade` (0–10). Enquanto `grade` for `null`, aparece "In progress" (no semestre com `current: true`) ou "—" (nos anteriores); quando você preencher notas, as médias e o gráfico de desempenho aparecem sozinhos.
-- **`certs.json`** — certificados. Opcional: `date` (`"2025-06-10"`), `url` (link de validação, ex.: Credly) e `file` (caminho de um PDF/imagem em `public/assets/certs/`, que é exibido na página do certificado).
-- **`projects.json`**
-  - `alias`: muda título, descrição, stack e ordem de um repositório do GitHub (`featured: true` coloca na Home).
-  - `extra`: projetos que não estão no seu GitHub (ex.: repositório de organização, projetos internos). `url: null` gera um card sem link.
-- **`blacklist.json`** — repositórios que não devem aparecer.
-
-## Rodando localmente
-
-```sh
-npm install
-npm run build      # gera public/assets/style.css
-npm run serve      # abre em http://localhost:3000
+```
+index.html            estrutura da página
+assets/css/style.css  todo o visual (cores em :root, no topo do arquivo)
+assets/js/app.js      renderização, idioma, terminal, projetos, animações
+assets/js/bg.js       fundo animado (canvas)
+assets/js/github.js   API do GitHub com cache de 30 min
+data/content.json     TODO o conteúdo do site
 ```
 
-Durante o desenvolvimento, `npm run dev` recompila o CSS a cada alteração. **Sempre rode `npm run build` depois de mudar classes no HTML/JS**, porque o Tailwind só gera as classes que encontra nos arquivos.
+## Editando o conteúdo
 
-> Abrir o `index.html` direto pelo explorador de arquivos não funciona (o navegador bloqueia o `fetch` dos JSON). Use o `npm run serve` ou a extensão *Live Server* do VS Code.
+Tudo fica em `data/content.json`. Textos traduzíveis usam o formato `{ "pt": "...", "en": "..." }`; textos iguais nos dois idiomas podem ser uma string simples.
 
-## Publicando no GitHub Pages (grátis)
+- `profile` — nome, links, status, frases que são "digitadas" no topo (`roles`) e resumo.
+- `metrics` — os 4 números animados. O de repositórios (`"id": "repos"`) é contado ao vivo pelo GitHub.
+- `experience` — `current: true` marca o cargo atual com o selo verde.
+- `projects` — `repo` é o nome do repositório no GitHub (abre o README no site). Sem `repo`, use `url` para um link externo ou `internal: true` para projeto privado. `cat` define o filtro: `backend`, `web`, `cloud`, `automation`, `mobile`, `game`.
+- `skills`, `certifications`, `education`.
 
-1. Crie um repositório chamado **`akog777.github.io`** e suba esta pasta inteira (com o `public/assets/style.css` já gerado).
-2. Em **Settings → Pages**, escolha *Deploy from a branch*, branch `main`, pasta `/ (root)`.
-3. O site fica em `https://akog777.github.io` (o `index.html` da raiz redireciona para `/public/`).
+Para mudar textos fixos da interface (menu, botões, comandos do terminal), edite o objeto `UI` no início de `assets/js/app.js`.
 
-Para usar um domínio próprio, crie um arquivo `CNAME` na raiz com o domínio.
+## Rodar localmente
 
-## Detalhes técnicos
+O navegador bloqueia o carregamento do JSON se você abrir o arquivo direto. Use um servidor simples:
 
-- A API pública do GitHub permite 60 requisições/hora por visitante; as respostas ficam em cache no `sessionStorage` por 30 min, e a página de projetos faz **uma** requisição só.
-- Se a API falhar, a página de projetos monta os cards a partir do `projects.json` em vez de ficar vazia.
-- O README é convertido com `marked` e sanitizado com `DOMPurify`; imagens e links relativos do README são reescritos para apontar ao GitHub.
-- Cabeçalho e rodapé são gerados em `public/js/layout.js` — edite em um lugar só.
+```sh
+python -m http.server 8080
+# ou: npx serve .
+```
 
-## Licença
+e acesse http://localhost:8080.
 
-MPL-2.0 — veja `LICENSE`.
+## Publicação
+
+Está pronto para o GitHub Pages: com o repositório `akog777.github.io` e o Pages apontando para `main` / `(root)`, o site fica em https://akog777.github.io.
+
+## Acessibilidade e desempenho
+
+- Respeita `prefers-reduced-motion` (sem boot, glitch nem animações).
+- A animação de fundo pausa quando a aba não está visível.
+- Uma única chamada à API do GitHub por visita (com cache), e o site funciona mesmo se ela falhar.

@@ -1,12 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=./public/">
-    <title>Isaac Koga — Portfolio</title>
-    <link rel="canonical" href="./public/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac Koga — Full-Stack Developer</title>
+    <meta name="description" content="Isaac Koga Carone — Desenvolvedor Full-Stack (React · Java · Python) e automação de processos. Sistemas de Informação no Mackenzie.">
+    <meta property="og:title" content="Isaac Koga — Full-Stack Developer">
+    <meta property="og:description" content="React · Java · Python · Process Automation. Information Systems @ Mackenzie.">
+    <meta name="theme-color" content="#04050A">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
 </head>
+
 <body>
-    <p>Redirecting to the <a href="./public/">portfolio</a>...</p>
+    <!-- Boot sequence -->
+    <div id="boot" aria-hidden="true">
+        <div class="boot-inner">
+            <div class="boot-logo">IK<span>//</span>OS</div>
+            <pre id="boot-log"></pre>
+            <div class="boot-bar"><i></i></div>
+        </div>
+    </div>
+
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Top bar -->
+    <header class="topbar">
+        <a href="#home" class="brand" aria-label="Isaac Koga — home">
+            <span class="brand-mark">IK</span>
+            <span class="brand-text">isaac<span class="dim">.</span>koga</span>
+        </a>
+        <div class="topbar-mid mono">
+            <span class="dot-live"></span>
+            <span data-i18n="online">SYSTEM ONLINE</span>
+            <span class="sep">|</span>
+            <span>SÃO PAULO</span>
+            <span id="clock">--:--:--</span>
+        </div>
+        <div class="topbar-actions">
+            <button id="lang-btn" class="chip-btn mono" aria-label="Switch language">EN</button>
+            <button id="menu-btn" class="chip-btn menu-btn" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+        </div>
+    </header>
+
+    <!-- Side navigation -->
+    <nav class="sidenav" id="sidenav" aria-label="Sections">
+        <a href="#home" data-nav="home"><b>00</b><span data-i18n="nav.home">Início</span></a>
+        <a href="#about" data-nav="about"><b>01</b><span data-i18n="nav.about">Perfil</span></a>
+        <a href="#experience" data-nav="experience"><b>02</b><span data-i18n="nav.experience">Experiência</span></a>
+        <a href="#projects" data-nav="projects"><b>03</b><span data-i18n="nav.projects">Projetos</span></a>
+        <a href="#skills" data-nav="skills"><b>04</b><span data-i18n="nav.skills">Skills</span></a>
+        <a href="#education" data-nav="education"><b>05</b><span data-i18n="nav.education">Formação</span></a>
+        <a href="#contact" data-nav="contact"><b>06</b><span data-i18n="nav.contact">Contato</span></a>
+    </nav>
+
+    <main>
+        <!-- 00 HERO -->
+        <section id="home" class="hero">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow mono reveal"><span class="bracket">[</span> <span data-i18n="hero.eyebrow">PORTFÓLIO // v2.0</span> <span class="bracket">]</span></p>
+                    <h1 class="hero-name reveal">
+                        <span class="glitch" data-text="ISAAC">ISAAC</span>
+                        <span class="glitch outline" data-text="KOGA">KOGA</span>
+                    </h1>
+                    <p class="hero-role mono reveal">&gt; <span id="typed"></span><span class="caret">▌</span></p>
+                    <p class="hero-summary reveal" id="hero-summary"></p>
+                    <div class="hero-cta reveal">
+                        <a href="#projects" class="btn btn-primary"><span data-i18n="hero.cta1">Ver projetos</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                        <a href="#contact" class="btn btn-ghost"><span data-i18n="hero.cta2">Abrir terminal</span><span class="kbd mono">_</span></a>
+                    </div>
+                </div>
+
+                <!-- HUD panel -->
+                <aside class="hud reveal" aria-label="Status">
+                    <div class="hud-ring">
+                        <svg viewBox="0 0 200 200" aria-hidden="true">
+                            <circle cx="100" cy="100" r="92" class="ring r1"/>
+                            <circle cx="100" cy="100" r="78" class="ring r2"/>
+                            <circle cx="100" cy="100" r="64" class="ring r3"/>
+                            <g class="ticks"></g>
+                        </svg>
+                        <div class="hud-core">
+                            <span class="mono">ID</span>
+                            <strong>IK-777</strong>
+                            <span class="mono dim">akog777</span>
+                        </div>
+                    </div>
+                    <dl class="hud-list mono">
+                        <div><dt data-i18n="hud.status">STATUS</dt><dd id="hud-status"></dd></div>
+                        <div><dt data-i18n="hud.location">LOCAL</dt><dd id="hud-location"></dd></div>
+                        <div><dt data-i18n="hud.coords">COORD.</dt><dd id="hud-coords"></dd></div>
+                        <div><dt data-i18n="hud.stack">CORE</dt><dd>React · Java · Python</dd></div>
+                        <div><dt data-i18n="hud.edu">EDU</dt><dd>Mackenzie · SI</dd></div>
+                    </dl>
+                    <div class="hud-socials" id="hud-socials"></div>
+                </aside>
+            </div>
+
+            <div class="metrics" id="metrics"></div>
+
+            <a href="#about" class="scroll-hint mono" aria-label="Scroll"><span data-i18n="hero.scroll">ROLAR</span><i></i></a>
+        </section>
+
+        <!-- 01 ABOUT -->
+        <section id="about" class="section">
+            <header class="section-head reveal">
+                <span class="idx mono">01</span>
+                <h2 data-i18n="about.title">Perfil</h2>
+                <span class="line"></span>
+            </header>
+            <div class="about-grid">
+                <div class="panel about-text reveal">
+                    <span class="panel-label mono">README.md</span>
+                    <p id="about-summary"></p>
+                    <ul class="about-points" id="about-points"></ul>
+                </div>
+                <div class="panel reveal code-panel">
+                    <span class="panel-label mono">automation.py</span>
+                    <pre class="mono code"><span class="c"># <span data-i18n="code.comment">rotina semanal — antes vs. depois</span></span>
+<span class="k">from</span> playwright.sync_api <span class="k">import</span> sync_playwright
+
+<span class="k">def</span> <span class="f">export_report</span>(filters):
+    page.goto(ERP_URL)
+    page.fill(<span class="s">"#filter"</span>, filters)
+    page.click(<span class="s">"text=Export"</span>)
+
+<span class="c"># manual:    3–4 h</span>
+<span class="c"># automated: </span><span class="ok">≤ 10 min ✓</span></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 EXPERIENCE -->
+        <section id="experience" class="section">
+            <header class="section-head reveal">
+                <span class="idx mono">02</span>
+                <h2 data-i18n="exp.title">Experiência</h2>
+                <span class="line"></span>
+            </header>
+            <div class="timeline" id="timeline"></div>
+        </section>
+
+        <!-- 03 PROJECTS -->
+        <section id="projects" class="section">
+            <header class="section-head reveal">
+                <span class="idx mono">03</span>
+                <h2 data-i18n="proj.title">Projetos</h2>
+                <span class="line"></span>
+            </header>
+            <div class="filters reveal" id="filters" role="tablist"></div>
+            <div class="projects" id="projects-grid"></div>
+            <p class="gh-note mono reveal" id="gh-note"></p>
+        </section>
+
+        <!-- 04 SKILLS -->
+        <section id="skills" class="section">
+            <header class="section-head reveal">
+                <span class="idx mono">04</span>
+                <h2 data-i18n="skills.title">Skills</h2>
+                <span class="line"></span>
+            </header>
+            <div class="skills-grid" id="skills-grid"></div>
+            <h3 class="sub-head mono reveal" data-i18n="certs.title">// CERTIFICAÇÕES</h3>
+            <div class="certs" id="certs"></div>
+        </section>
+
+        <!-- 05 EDUCATION -->
+        <section id="education" class="section">
+            <header class="section-head reveal">
+                <span class="idx mono">05</span>
+                <h2 data-i18n="edu.title">Formação</h2>
+                <span class="line"></span>
+            </header>
+            <div class="edu-grid" id="edu"></div>
+        </section>
+
+        <!-- 06 CONTACT -->
+        <section id="contact" class="section">
+            <header class="section-head reveal">
+                <span class="idx mono">06</span>
+                <h2 data-i18n="contact.title">Contato</h2>
+                <span class="line"></span>
+            </header>
+            <div class="contact-grid">
+                <div class="contact-cards reveal" id="contact-cards"></div>
+                <div class="terminal reveal" id="terminal">
+                    <div class="term-bar mono">
+                        <i></i><i></i><i></i>
+                        <span>isaac@portfolio: ~</span>
+                    </div>
+                    <div class="term-body mono" id="term-out" aria-live="polite"></div>
+                    <form class="term-input mono" id="term-form" autocomplete="off">
+                        <label for="term-in" class="prompt">isaac@portfolio:~$</label>
+                        <input id="term-in" type="text" spellcheck="false" aria-label="Terminal command">
+                    </form>
+                    <div class="term-hints mono" id="term-hints"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer mono">
+        <span>© <span id="year"></span> Isaac Koga Carone</span>
+        <span class="dim" data-i18n="footer.built">Feito à mão com HTML, CSS e JavaScript puro</span>
+        <a href="#home" class="dim">↑ TOP</a>
+    </footer>
+
+    <!-- Project modal (README viewer) -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-box">
+            <header class="modal-head">
+                <div>
+                    <span class="mono dim" id="modal-path"></span>
+                    <h3 id="modal-title"></h3>
+                </div>
+                <div class="modal-actions">
+                    <a id="modal-gh" class="btn btn-ghost btn-sm" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <button class="chip-btn" data-close aria-label="Close">✕</button>
+                </div>
+            </header>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js" type="module"></script>
 </body>
+
 </html>
