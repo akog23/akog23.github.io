@@ -27,7 +27,7 @@ const UI = {
             ['IA Generativa', 'para acelerar entregas'],
         ],
         code: { eyebrow: 'Na prática', title: 'Rotinas de horas viraram minutos', text: 'Na Huawei, robôs em Python + Playwright e macros VBA assumiram exportações de relatórios e atualizações de bases que eram feitas à mão.', comment: 'rotina semanal — antes vs. depois' },
-        current: 'Atual', featured: 'Destaque', internal: 'Projeto interno', updated: 'Atualizado em', details: 'Ver detalhes',
+        current: 'Atual', featured: 'Destaque', internal: 'Código privado', verify: 'Verificar', updated: 'Atualizado em', details: 'Ver detalhes',
         cats: { all: 'Todos', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automação', mobile: 'Mobile', game: 'Games' },
         ghOk: n => `${n} repositórios sincronizados com o GitHub · `,
         ghFail: 'GitHub indisponível no momento — exibindo dados locais · ',
@@ -37,7 +37,7 @@ const UI = {
         languages: 'Idiomas', curriculum: 'Grade curricular', stage: 'Etapa', coursesN: n => `${n} disciplinas`,
         st: { done: 'Concluída', current: 'Cursando', next: 'Próxima' },
         readmeLoading: 'Carregando README…', readmeFail: 'Não foi possível carregar o README agora.', readmeShort: 'Este repositório tem um README curto — abra no GitHub para ver o código.',
-        internalNote: 'Projeto interno da empresa: o código não é público.',
+        internalNote: 'Projeto de empresa/cliente: o código não é público.',
         copyMail: 'Copiar e-mail', copied: 'E-mail copiado ✓',
         themeLabel: 'Alternar tema', langLabel: 'Switch to English',
     },
@@ -64,7 +64,7 @@ const UI = {
             ['Generative AI', 'to ship faster'],
         ],
         code: { eyebrow: 'In practice', title: 'Hour-long routines became minutes', text: 'At Huawei, Python + Playwright bots and VBA macros took over report exports and database updates that used to be done by hand.', comment: 'weekly routine — before vs. after' },
-        current: 'Current', featured: 'Featured', internal: 'Internal project', updated: 'Updated', details: 'View details',
+        current: 'Current', featured: 'Featured', internal: 'Private code', verify: 'Verify', updated: 'Updated', details: 'View details',
         cats: { all: 'All', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automation', mobile: 'Mobile', game: 'Games' },
         ghOk: n => `${n} repositories synced from GitHub · `,
         ghFail: 'GitHub is unavailable right now — showing local data · ',
@@ -74,7 +74,7 @@ const UI = {
         languages: 'Languages', curriculum: 'Curriculum', stage: 'Semester', coursesN: n => `${n} courses`,
         st: { done: 'Completed', current: 'In progress', next: 'Upcoming' },
         readmeLoading: 'Loading README…', readmeFail: "Couldn't load the README right now.", readmeShort: 'This repository has a short README — open it on GitHub to browse the code.',
-        internalNote: 'Internal company project: the code is not public.',
+        internalNote: 'Company/client project: the code is not public.',
         copyMail: 'Copy email', copied: 'Email copied ✓',
         themeLabel: 'Toggle theme', langLabel: 'Mudar para português',
     },
@@ -149,7 +149,7 @@ function renderHero() {
     const f = T('facts');
     const facts = [
         [f.location, p.location],
-        [f.now, 'Trainee · Management Solutions'],
+        [f.now, LANG === 'pt' ? 'Trainee · Management Solutions' : 'Trainee · Management Solutions'],
         [f.edu, `${LANG === 'pt' ? 'SI' : 'B.Sc. IS'} · Mackenzie (${cur ? T('stageOf')(cur.n) : ''})`],
         [f.langs, T('langsValue')],
     ];
@@ -263,12 +263,19 @@ function renderSkills() {
             <h3>${esc(L(s.title))}</h3>
             <div class="tags">${s.items.map(it => `<span class="tag">${esc(it)}</span>`).join('')}</div>
         </div>`).join('');
-    $('#certs').innerHTML = DATA.certifications.map(c => `
-        <div class="card cert reveal">
+    const month = ym => { if (!ym) return ''; const [y, m] = ym.split('-').map(Number); return new Date(y, m - 1, 15).toLocaleDateString(locale(), { month: 'short', year: 'numeric' }); };
+    $('#certs').innerHTML = DATA.certifications.map(c => {
+        const tag = c.url ? 'a' : 'div';
+        const attrs = c.url ? `href="${esc(c.url)}" target="_blank" rel="noopener noreferrer"` : '';
+        const meta = [month(c.date), c.hours ? `${c.hours}h` : ''].filter(Boolean).join(' · ');
+        return `
+        <${tag} ${attrs} class="card cert ${c.url ? 'hoverable spot' : ''} reveal">
             <span class="cert-issuer">${esc(c.issuer)}</span>
             <span class="cert-title">${esc(L(c.title))}</span>
-            <span class="cert-hours">${c.hours} ${T('hours')}</span>
-        </div>`).join('');
+            <span class="cert-foot"><span>${esc(meta)}</span>${c.url ? `<span class="cert-verify">${T('verify')} ↗</span>` : ''}</span>
+        </${tag}>`;
+    }).join('');
+    bindSpotlight($('#certs'));
 }
 
 function renderEducation() {

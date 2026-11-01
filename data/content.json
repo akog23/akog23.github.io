@@ -6,16 +6,16 @@
     "email": "akog.sac@gmail.com",
     "location": "São Paulo, SP — Brasil",
     "status": {
-      "pt": "Trainee @ Management Solutions",
-      "en": "Trainee @ Management Solutions"
+      "pt": "Trainee em Tech Consulting @ Management Solutions",
+      "en": "Tech Consulting Trainee @ Management Solutions"
     },
     "tagline": {
-      "pt": "Gosto de transformar processos manuais e bagunçados em sistemas limpos e escaláveis — de interfaces em React a back-ends em Spring Boot e automações em Python que devolvem horas ao time.",
-      "en": "I like turning messy manual processes into clean, scalable systems — from React interfaces to Spring Boot back-ends and Python automations that give hours back to the team."
+      "pt": "Toda empresa tem uma planilha que alguém atualiza na mão toda semana. Eu gosto de encontrar essa planilha — e transformar em código.",
+      "en": "Every company has a spreadsheet someone updates by hand every week. I like finding that spreadsheet — and turning it into code."
     },
     "summary": {
-      "pt": "Estudante de Sistemas de Informação no Mackenzie com experiência em desenvolvimento full-stack (React.js, Java/Spring Boot, APIs REST) e em automação de processos em ambiente corporativo. Perfil analítico, com base sólida em SQL, lógica de programação e troubleshooting — e uso de IA generativa para acelerar entregas.",
-      "en": "Information Systems student at Mackenzie with hands-on experience in full-stack development (React.js, Java/Spring Boot, REST APIs) and corporate process automation. Analytical profile with a solid base in SQL, programming logic and troubleshooting — using generative AI to ship faster."
+      "pt": "Trainee em Consultoria de Tecnologia na Management Solutions e estudante de Sistemas de Informação no Mackenzie. Desenvolvo com React, Java/Spring Boot e Python, e na Huawei criei cerca de 10 automações que reduziram processos de 3–4 horas para no máximo 10 minutos.",
+      "en": "Tech Consulting Trainee at Management Solutions and Information Systems student at Mackenzie. I build with React, Java/Spring Boot and Python — and at Huawei I created about 10 automations that cut 3–4 hour processes down to 10 minutes or less."
     },
     "headline": {
       "pt": {
@@ -48,12 +48,12 @@
       }
     },
     {
-      "value": 222,
+      "value": 7,
       "prefix": "",
-      "suffix": "h",
+      "suffix": "",
       "label": {
-        "pt": "em certificações (Cisco + Swift)",
-        "en": "of certifications (Cisco + Swift)"
+        "pt": "certificações (AWS, Cisco e Swift)",
+        "en": "certifications (AWS, Cisco and Swift)"
       }
     },
     {
@@ -72,8 +72,8 @@
     {
       "company": "Management Solutions",
       "role": {
-        "pt": "Trainee",
-        "en": "Trainee"
+        "pt": "Trainee em Consultoria de Tecnologia",
+        "en": "Tech Consulting Trainee"
       },
       "period": {
         "pt": "Out 2026 — Atual",
@@ -81,81 +81,90 @@
       },
       "current": true,
       "type": {
-        "pt": "Consultoria",
-        "en": "Consulting"
+        "pt": "Consultoria · Híbrido",
+        "en": "Consulting · Hybrid"
       },
       "bullets": {
         "pt": [
-          "Programa de trainee em consultoria internacional, atuando em projetos de negócio e tecnologia para clientes."
+          "Projetos que conectam necessidades de negócio de clientes a soluções tecnológicas.",
+          "Apoio à equipe de projeto em levantamento de requisitos e análise de dados.",
+          "Programa de formação em metodologias ágeis (Scrum)."
         ],
         "en": [
-          "Trainee program at an international consulting firm, working on business and technology projects for clients."
+          "Projects connecting clients' business needs to technology solutions.",
+          "Support to the project team on requirements gathering and data analysis.",
+          "Training program in agile methodologies (Scrum)."
         ]
       },
       "tags": [
         "Consulting",
-        "Business & Tech"
+        "Requirements",
+        "Data Analysis",
+        "Scrum"
       ]
     },
     {
-      "company": "Huawei",
+      "company": "Huawei Brasil",
       "role": {
-        "pt": "Estágio — Analista de Suporte · Contract Fulfillment",
-        "en": "Support Analyst Intern · Contract Fulfillment"
+        "pt": "Estágio — Contract Transaction Fulfillment",
+        "en": "Contract Transaction Fulfillment Intern"
       },
       "period": {
-        "pt": "Dez 2025 — 2026",
-        "en": "Dec 2025 — 2026"
+        "pt": "Dez 2025 — Out 2026",
+        "en": "Dec 2025 — Oct 2026"
       },
       "current": false,
       "type": {
-        "pt": "Telecom",
-        "en": "Telecom"
+        "pt": "Telecom · Presencial",
+        "en": "Telecom · On-site"
       },
       "bullets": {
         "pt": [
-          "Suporte a sistemas e troubleshooting: resolução de incidentes em sistemas transacionais, na interface entre TI e Negócios (DWDM/Telecom).",
-          "Automação & dados: cerca de 10 scripts e macros (Python/Playwright e VBA) para rotinas de backoffice e bases de POs/Contratos — processos de 3–4 h passaram a levar no máximo 10 min.",
-          "Otimização de processos: mapeamento técnico de gargalos operacionais e melhorias de fluxo, reduzindo o retrabalho da equipe."
+          "Reduzi processos recorrentes de 3–4 horas para no máximo 10 minutos com cerca de 10 automações em Python (Playwright) e VBA — extração de relatórios do ERP e atualização de bases, usadas pelo meu time e por outras áreas.",
+          "Preparei Pre-POs e Bills of Quantities (BOQ) para a linha DWDM, traduzindo requisitos de clientes em soluções técnicas para 3 projetos.",
+          "Suporte a contratos nos modelos PAYU e PAYG, garantindo conformidade e prazo de entrega.",
+          "Substituí a inserção manual de dados por um processo de um clique, dando ao time informações sempre atualizadas."
         ],
         "en": [
-          "Systems support & troubleshooting: resolved incidents in transactional systems, bridging IT and Business (DWDM/Telecom).",
-          "Automation & data: about 10 scripts and macros (Python/Playwright and VBA) for back-office routines and PO/Contract databases — 3–4 h processes now take 10 min at most.",
-          "Process optimization: technical mapping of operational bottlenecks and workflow improvements, reducing team rework."
+          "Cut recurring 3–4 hour processes down to 10 minutes or less with about 10 automations in Python (Playwright) and VBA — ERP report extraction and database updates, used by my team and other areas.",
+          "Prepared Pre-POs and Bills of Quantities (BOQ) for the DWDM product line, translating client requirements into technical solutions for 3 projects.",
+          "Supported contracts under PAYU and PAYG models, ensuring compliance and delivery deadlines.",
+          "Replaced manual data entry with a one-click process, giving the team always up-to-date information."
         ]
       },
       "tags": [
         "Python",
         "Playwright",
         "VBA",
-        "SQL",
-        "Troubleshooting"
+        "ERP",
+        "DWDM",
+        "Contracts"
       ]
     },
     {
       "company": "AllCars4U",
       "role": {
-        "pt": "Desenvolvedor Full-Stack",
-        "en": "Full-Stack Developer"
+        "pt": "Desenvolvedor Full-Stack (Freelance)",
+        "en": "Full-Stack Developer (Freelance)"
       },
       "period": {
-        "pt": "Mar 2025 — Mai 2025",
-        "en": "Mar 2025 — May 2025"
+        "pt": "Fev 2025 — Abr 2025",
+        "en": "Feb 2025 — Apr 2025"
       },
       "current": false,
       "type": {
-        "pt": "Web",
-        "en": "Web"
+        "pt": "Freelance · Remoto",
+        "en": "Freelance · Remote"
       },
       "bullets": {
         "pt": [
-          "Aplicações web responsivas com React.js e JavaScript, com componentização e gerenciamento de estado da interface.",
-          "Integração de sistemas e consumo de dados via APIs RESTful, estruturando chamadas e tratamento de respostas.",
+          "Entreguei sozinho, em 3 meses, o protótipo de um marketplace de anúncio e venda de carros — da concepção com o cliente à integração de dados.",
+          "Listagem e busca de anúncios em React, HTML5, CSS3 e JavaScript, consumindo uma API externa de marcas e modelos em tempo real.",
           "Testes e debugging (React/SQL), reduzindo bugs reportados em produção."
         ],
         "en": [
-          "Responsive web apps with React.js and JavaScript, using components and UI state management.",
-          "Systems integration and data consumption through RESTful APIs, structuring requests and response handling.",
+          "Delivered solo, in 3 months, the prototype of a car listing and sales marketplace — from client discovery to data integration.",
+          "Listing and search built with React, HTML5, CSS3 and JavaScript, consuming an external makes-and-models API in real time.",
           "Testing and debugging (React/SQL), reducing bugs reported in production."
         ]
       },
@@ -167,10 +176,40 @@
       ]
     },
     {
+      "company": "Universidade Presbiteriana Mackenzie",
+      "role": {
+        "pt": "Instrutor de TI (Voluntário)",
+        "en": "IT Instructor (Volunteer)"
+      },
+      "period": {
+        "pt": "Out 2024",
+        "en": "Oct 2024"
+      },
+      "current": false,
+      "type": {
+        "pt": "Voluntariado · Educação",
+        "en": "Volunteer · Education"
+      },
+      "bullets": {
+        "pt": [
+          "Promovi inclusão digital ensinando habilidades práticas de informática para pessoas com pouca experiência em tecnologia.",
+          "Simplifiquei conceitos técnicos e adaptei métodos de ensino para um aprendizado acessível."
+        ],
+        "en": [
+          "Promoted digital inclusion by teaching practical computer skills to people with little tech experience.",
+          "Simplified technical concepts and adapted teaching methods for accessible learning."
+        ]
+      },
+      "tags": [
+        "Teaching",
+        "Communication"
+      ]
+    },
+    {
       "company": "Associação Deseret",
       "role": {
-        "pt": "Missionário (Trabalho Voluntário)",
-        "en": "Missionary (Volunteer Work)"
+        "pt": "Missionário (Voluntário)",
+        "en": "Missionary (Volunteer)"
       },
       "period": {
         "pt": "Mar 2022 — Mar 2024",
@@ -178,20 +217,24 @@
       },
       "current": false,
       "type": {
-        "pt": "Voluntariado",
-        "en": "Volunteer"
+        "pt": "Voluntariado · Serviço social",
+        "en": "Volunteer · Social service"
       },
       "bullets": {
         "pt": [
-          "Liderança operacional de equipes multiculturais, com delegação de tarefas, planejamento logístico e acompanhamento contínuo de métricas de desempenho."
+          "Mais de 60 horas semanais de trabalho comunitário com pessoas de diferentes origens.",
+          "Liderei equipes de 10 voluntários, definindo metas semanais e acompanhando resultados.",
+          "Planejamento estratégico, logística e gestão de desempenho das equipes sob minha supervisão."
         ],
         "en": [
-          "Operational leadership of multicultural teams: task delegation, logistics planning and continuous tracking of performance metrics."
+          "60+ hours a week of community work with people from different backgrounds.",
+          "Led teams of 10 volunteers, setting weekly goals and tracking results.",
+          "Strategic planning, logistics and performance management of the teams under my supervision."
         ]
       },
       "tags": [
         "Leadership",
-        "Logistics",
+        "Planning",
         "Multicultural teams"
       ]
     }
@@ -521,10 +564,11 @@
         "en": "Cloud & Tools"
       },
       "items": [
-        "AWS",
+        "AWS (Cloud Architecting)",
         "Git / GitHub",
         "Figma",
         "Draw.io",
+        "Scrum",
         "Pacote Office",
         "IA Generativa"
       ]
@@ -536,51 +580,63 @@
         "en": "Networking & Security"
       },
       "items": [
-        "Cisco CCNA",
+        "Redes (CCNA)",
         "Cibersegurança",
+        "IoT",
         "Troubleshooting"
       ]
     }
   ],
   "certifications": [
     {
-      "title": "CCNA",
-      "issuer": "Cisco",
-      "hours": 80,
-      "area": "net"
+      "title": "Cloud Architecting",
+      "issuer": "Amazon Web Services",
+      "date": "2026-10",
+      "url": "https://www.credly.com/badges/ab2ec487-38b1-450a-b516-6b3d839bff94"
     },
     {
-      "title": {
-        "pt": "Cibersegurança",
-        "en": "Cybersecurity"
-      },
-      "issuer": "Cisco",
+      "title": "Introduction to IoT",
+      "issuer": "Cisco Networking Academy",
+      "date": "2026-09",
+      "url": "https://www.credly.com/badges/f5adb67d-1d38-48d6-b2ea-5e81df1816a2"
+    },
+    {
+      "title": "Introduction to Cybersecurity",
+      "issuer": "Cisco Networking Academy",
+      "date": "2026-04",
       "hours": 70,
-      "area": "net"
+      "url": "https://www.credly.com/badges/fa494f36-3eca-4dc1-8df8-5d2fa76daf0a"
     },
     {
-      "title": {
-        "pt": "POO (Swift)",
-        "en": "OOP (Swift)"
-      },
-      "issuer": "Swift",
-      "hours": 24,
-      "area": "ios"
-    },
-    {
-      "title": {
-        "pt": "Lógica de Programação (Swift)",
-        "en": "Programming Logic (Swift)"
-      },
-      "issuer": "Swift",
-      "hours": 24,
-      "area": "ios"
+      "title": "CCNA: Introduction to Networks",
+      "issuer": "Cisco Networking Academy",
+      "date": "2026-02",
+      "hours": 80,
+      "url": "https://www.credly.com/badges/81af8c0e-0925-45c1-81f3-4c8966ddbb80"
     },
     {
       "title": "Foundation iOS",
-      "issuer": "Swift",
-      "hours": 24,
-      "area": "ios"
+      "issuer": "TIC em Trilhas · Mackenzie",
+      "date": "2025-10",
+      "hours": 24
+    },
+    {
+      "title": {
+        "pt": "Programação Orientada a Objetos com Swift",
+        "en": "Object-Oriented Programming with Swift"
+      },
+      "issuer": "TIC em Trilhas · Mackenzie",
+      "date": "2025-09",
+      "hours": 24
+    },
+    {
+      "title": {
+        "pt": "Lógica de Programação com Swift",
+        "en": "Programming Logic with Swift"
+      },
+      "issuer": "TIC em Trilhas · Mackenzie",
+      "date": "2025-09",
+      "hours": 24
     }
   ],
   "projects": [
@@ -667,17 +723,36 @@
       }
     },
     {
+      "repo": null,
+      "title": {
+        "pt": "Marketplace de Carros",
+        "en": "Car Marketplace"
+      },
+      "cat": "web",
+      "internal": true,
+      "stack": [
+        "React",
+        "JavaScript",
+        "REST API"
+      ],
+      "desc": {
+        "pt": "Protótipo de marketplace de anúncio e venda de carros, entregue sozinho em 3 meses como freelance para a AllCars4U: listagem e busca em React consumindo uma API externa de marcas e modelos em tempo real. Código do cliente, não público.",
+        "en": "Car listing and sales marketplace prototype, delivered solo in 3 months as a freelance project for AllCars4U: listing and search in React consuming an external makes-and-models API in real time. Client code, not public."
+      }
+    },
+    {
       "repo": "PokedeX",
       "title": "Pokédex iOS",
       "cat": "mobile",
       "stack": [
         "Swift",
         "SwiftUI",
-        "REST API"
+        "async/await",
+        "Codable"
       ],
       "desc": {
-        "pt": "App iOS em SwiftUI que consome a PokéAPI para listar os 151 primeiros Pokémon, com filtro por tipo e favoritos.",
-        "en": "SwiftUI iOS app consuming PokéAPI to list the first 151 Pokémon, with type filters and favorites."
+        "pt": "App iOS em SwiftUI que consome a PokéAPI para listar os 151 Pokémon originais, com busca em tempo real, tela de detalhes com cores dinâmicas por tipo e favoritos persistidos com UserDefaults. Usa async/await, Codable e NavigationStack.",
+        "en": "SwiftUI iOS app consuming PokéAPI to list the original 151 Pokémon, with real-time search, a detail screen with type-based dynamic colors and favorites persisted with UserDefaults. Uses async/await, Codable and NavigationStack."
       }
     },
     {
