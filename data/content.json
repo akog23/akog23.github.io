@@ -212,12 +212,6 @@
     },
     "start": "2024-06-01",
     "end": "2028-06-30",
-    "courses": [
-      "Computação em Nuvem",
-      "PPADS",
-      "Programação de Sistemas II",
-      "Engenharia de Software"
-    ],
     "languages": [
       {
         "name": {
@@ -240,6 +234,247 @@
           "en": "Intermediate"
         },
         "pct": 60
+      }
+    ],
+    "hoursDone": 1784,
+    "hoursInProgress": 437,
+    "hoursTotal": 3571,
+    "terms": [
+      {
+        "n": 1,
+        "period": "2024.2",
+        "status": "done",
+        "courses": [
+          {
+            "pt": "Algoritmos e Programação I",
+            "en": "Algorithms and Programming I"
+          },
+          {
+            "pt": "Fundamentos de Sistemas de Informação",
+            "en": "Fundamentals of Information Systems"
+          },
+          {
+            "pt": "Fundamentos de Web",
+            "en": "Web Fundamentals"
+          },
+          {
+            "pt": "Hardware para Computação",
+            "en": "Computer Hardware"
+          },
+          {
+            "pt": "Ciência, Tecnologia e Sociedade na Matemática e na Computação",
+            "en": "Science, Technology and Society in Math and Computing"
+          },
+          {
+            "pt": "Ética e Cidadania",
+            "en": "Ethics and Citizenship"
+          }
+        ]
+      },
+      {
+        "n": 2,
+        "period": "2025.1",
+        "status": "done",
+        "courses": [
+          {
+            "pt": "Desenvolvimento de Sistemas I",
+            "en": "Systems Development I"
+          },
+          {
+            "pt": "Programação de Sistemas I",
+            "en": "Systems Programming I"
+          },
+          {
+            "pt": "Introdução à Engenharia de Software",
+            "en": "Introduction to Software Engineering"
+          },
+          {
+            "pt": "Introdução a Sistemas Operacionais",
+            "en": "Introduction to Operating Systems"
+          },
+          {
+            "pt": "Web Mobile",
+            "en": "Web Mobile"
+          },
+          {
+            "pt": "Fundamentos de Matemática",
+            "en": "Mathematics Fundamentals"
+          },
+          {
+            "pt": "Introdução à Cosmovisão Reformada",
+            "en": "Introduction to Reformed Worldview"
+          }
+        ]
+      },
+      {
+        "n": 3,
+        "period": "2025.2",
+        "status": "done",
+        "courses": [
+          {
+            "pt": "Banco de Dados",
+            "en": "Databases"
+          },
+          {
+            "pt": "Estrutura de Dados",
+            "en": "Data Structures"
+          },
+          {
+            "pt": "Desenvolvimento de Sistemas II",
+            "en": "Systems Development II"
+          },
+          {
+            "pt": "Programação de Sistemas II",
+            "en": "Systems Programming II"
+          },
+          {
+            "pt": "Comunicação de Dados",
+            "en": "Data Communication"
+          },
+          {
+            "pt": "Princípios de Empreendedorismo",
+            "en": "Principles of Entrepreneurship"
+          }
+        ]
+      },
+      {
+        "n": 4,
+        "period": "2026.1",
+        "status": "done",
+        "courses": [
+          {
+            "pt": "Segurança e Direito Digital",
+            "en": "Security and Digital Law"
+          },
+          {
+            "pt": "Jogos Digitais",
+            "en": "Digital Games"
+          },
+          {
+            "pt": "Fatores Humanos em Sistemas Computacionais",
+            "en": "Human Factors in Computing Systems"
+          },
+          {
+            "pt": "Modelagem de Negócios",
+            "en": "Business Modeling"
+          },
+          {
+            "pt": "Administração de Negócios",
+            "en": "Business Administration"
+          },
+          {
+            "pt": "Organização e Interação de Equipes",
+            "en": "Team Organization and Interaction"
+          },
+          {
+            "pt": "Projetos Empreendedores",
+            "en": "Entrepreneurial Projects"
+          }
+        ]
+      },
+      {
+        "n": 5,
+        "period": "2026.2",
+        "status": "current",
+        "courses": [
+          {
+            "pt": "Serviços em Nuvem",
+            "en": "Cloud Services"
+          },
+          {
+            "pt": "Teste de Software",
+            "en": "Software Testing"
+          },
+          {
+            "pt": "Tópicos de Engenharia de Software",
+            "en": "Topics in Software Engineering"
+          },
+          {
+            "pt": "Tópicos de Bancos de Dados",
+            "en": "Topics in Databases"
+          },
+          {
+            "pt": "Objetos Inteligentes Conectados (IoT)",
+            "en": "Connected Smart Objects (IoT)"
+          },
+          {
+            "pt": "Probabilidade e Estatística Aplicadas",
+            "en": "Applied Probability and Statistics"
+          },
+          {
+            "pt": "Prática Profissional em Análise e Desenvolvimento de Sistemas",
+            "en": "Professional Practice in Systems Analysis and Development"
+          }
+        ]
+      },
+      {
+        "n": 6,
+        "period": "2027.1",
+        "status": "next",
+        "courses": [
+          {
+            "pt": "Ciência de Dados",
+            "en": "Data Science"
+          },
+          {
+            "pt": "Sistemas Integrados de Gestão (ERP)",
+            "en": "Integrated Management Systems (ERP)"
+          },
+          {
+            "pt": "Projetos e Inovação em TI",
+            "en": "IT Projects and Innovation"
+          },
+          {
+            "pt": "Pesquisa Operacional Aplicada",
+            "en": "Applied Operations Research"
+          },
+          {
+            "pt": "Metodologia de Pesquisa em Computação",
+            "en": "Research Methods in Computing"
+          }
+        ]
+      },
+      {
+        "n": 7,
+        "period": "2027.2",
+        "status": "next",
+        "courses": [
+          {
+            "pt": "Inteligência Artificial",
+            "en": "Artificial Intelligence"
+          },
+          {
+            "pt": "Infraestrutura Distribuída",
+            "en": "Distributed Infrastructure"
+          },
+          {
+            "pt": "Governança de TI",
+            "en": "IT Governance"
+          },
+          {
+            "pt": "Modelagem e Simulação",
+            "en": "Modeling and Simulation"
+          },
+          {
+            "pt": "Trabalho de Conclusão de Curso I",
+            "en": "Capstone Project I"
+          }
+        ]
+      },
+      {
+        "n": 8,
+        "period": "2028.1",
+        "status": "next",
+        "courses": [
+          {
+            "pt": "Trabalho de Conclusão de Curso II",
+            "en": "Capstone Project II"
+          },
+          {
+            "pt": "Estágio Supervisionado",
+            "en": "Supervised Internship"
+          }
+        ]
       }
     ]
   },
@@ -401,8 +636,8 @@
         "HTML"
       ],
       "desc": {
-        "pt": "Sistema de gestão para clínica veterinária (tutores, pets e consultas) publicado na AWS Learner Lab, com landing page no Amazon S3, especificação, modelo ER, Security Groups e ADRs. Projeto em grupo.",
-        "en": "Veterinary clinic management system (owners, pets, appointments) deployed on AWS Learner Lab, with an Amazon S3 landing page, spec, ER model, Security Groups and ADRs. Group project."
+        "pt": "Sistema de gestão para clínica veterinária (tutores, pets e consultas) publicado na AWS Learner Lab, com landing page no Amazon S3, especificação, modelo ER, Security Groups e ADRs. Projeto em grupo da disciplina Serviços em Nuvem.",
+        "en": "Veterinary clinic management system (owners, pets, appointments) deployed on AWS Learner Lab, with an Amazon S3 landing page, spec, ER model, Security Groups and ADRs. Group project for the Cloud Services course."
       }
     },
     {
@@ -435,8 +670,8 @@
         "HTML/CSS"
       ],
       "desc": {
-        "pt": "Gestão de espaços e eventos de um auditório: cadastro com verificação de conflito de horário e protótipo de 8 telas (login, check-in, presença, relatórios). Projeto em grupo da disciplina PPADS.",
-        "en": "Space and event management for an auditorium: registration with schedule-conflict checks and an 8-screen prototype (login, check-in, attendance, reports). Group project for PPADS."
+        "pt": "Gestão de espaços e eventos de um auditório: cadastro com verificação de conflito de horário e protótipo de 8 telas (login, check-in, presença, relatórios). Projeto em grupo da disciplina Prática Profissional em Análise e Desenvolvimento de Sistemas.",
+        "en": "Space and event management for an auditorium: registration with schedule-conflict checks and an 8-screen prototype (login, check-in, attendance, reports). Group project for the Professional Practice in Systems Analysis course."
       }
     },
     {

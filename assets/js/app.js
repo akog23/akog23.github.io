@@ -18,7 +18,7 @@ const UI = {
         cats: { all: 'Todos', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automação', mobile: 'Mobile', game: 'Games' },
         ghOk: n => `// ${n} repositórios sincronizados ao vivo com github.com/`,
         ghFail: '// GitHub indisponível agora — exibindo dados locais. Veja em github.com/',
-        progress: 'PROGRESSO DO CURSO', courses: 'Disciplinas em destaque', langs: 'Idiomas', hoursUnit: 'horas',
+        progress: 'PROGRESSO DO CURSO', courses: 'Disciplinas em destaque', hoursDone: 'concluídas', hoursNow: 'em curso', of: 'de', stage: 'Etapa', stageOf: n => `${n}ª de 8 etapas`, curriculum: 'GRADE CURRICULAR', st: { done: 'Concluída', current: 'Cursando agora', next: 'Próxima' }, coursesDone: n => `${n} disciplinas concluídas`, langs: 'Idiomas', hoursUnit: 'horas',
         readmeLoading: 'carregando README', readmeFail: 'Não foi possível carregar o README agora.', readmeShort: 'Este repositório tem um README curto — abra no GitHub para ver o código.',
         internalNote: 'Projeto interno: o código não é público.',
         copy: 'COPIADO', email: 'E-mail', linkedin: 'LinkedIn', github: 'GitHub',
@@ -55,7 +55,7 @@ const UI = {
         cats: { all: 'All', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automation', mobile: 'Mobile', game: 'Games' },
         ghOk: n => `// ${n} repositories synced live from github.com/`,
         ghFail: '// GitHub is unavailable right now — showing local data. See github.com/',
-        progress: 'DEGREE PROGRESS', courses: 'Highlighted courses', langs: 'Languages', hoursUnit: 'hours',
+        progress: 'DEGREE PROGRESS', courses: 'Highlighted courses', hoursDone: 'completed', hoursNow: 'in progress', of: 'of', stage: 'Semester', stageOf: n => `semester ${n} of 8`, curriculum: 'CURRICULUM', st: { done: 'Completed', current: 'In progress', next: 'Upcoming' }, coursesDone: n => `${n} courses completed`, langs: 'Languages', hoursUnit: 'hours',
         readmeLoading: 'loading README', readmeFail: "Couldn't load the README right now.", readmeShort: 'This repository has a short README — open it on GitHub to browse the code.',
         internalNote: 'Internal project: the code is not public.',
         copy: 'COPIED', email: 'Email', linkedin: 'LinkedIn', github: 'GitHub',
@@ -272,23 +272,34 @@ function renderSkills() {
         </div>`).join('');
 }
 
+let TERM = null;   // selected semester in the curriculum stepper
+
 function renderEducation() {
     const e = DATA.education;
-    const start = new Date(`${e.start}T12:00:00`), end = new Date(`${e.end}T12:00:00`), now = new Date();
-    const pct = Math.max(0, Math.min(100, ((now - start) / (end - start)) * 100));
+    const start = new Date(`${e.start}T12:00:00`), end = new Date(`${e.end}T12:00:00`);
+    const loc = LANG === 'pt' ? 'pt-BR' : 'en-US';
+    const fmt = d => d.toLocaleDateString(loc, { month: 'short', year: 'numeric' });
+    const pctDone = (e.hoursDone / e.hoursTotal) * 100;
+    const pctNow = (e.hoursInProgress / e.hoursTotal) * 100;
+    const current = e.terms.find(t => t.status === 'current') || e.terms[0];
+    const doneCount = e.terms.filter(t => t.status === 'done').reduce((n, t) => n + t.courses.length, 0);
+    if (TERM === null) TERM = current.n;
+    const num = n => n.toLocaleString(loc);
+
     $('#edu').innerHTML = `
         <div class="panel reveal">
             <span class="panel-label mono">B.Sc.</span>
-            <span class="small-label">${start.getFullYear()} — ${end.getFullYear()}</span>
+            <span class="small-label">${esc(fmt(start))} — ${esc(fmt(end))}</span>
             <h3 class="edu-inst">${esc(e.institution)}</h3>
-            <p class="edu-degree mono">${esc(L(e.degree))}</p>
-            <div class="progress-top"><span>${T('progress')}</span><b>${pct.toFixed(0)}%</b></div>
-            <div class="bar"><i data-w="${pct}"></i></div>
-            <div class="bar-ends"><span>${start.toLocaleDateString(LANG === 'pt' ? 'pt-BR' : 'en-US', { month: 'short', year: 'numeric' })}</span><span>${end.toLocaleDateString(LANG === 'pt' ? 'pt-BR' : 'en-US', { month: 'short', year: 'numeric' })}</span></div>
-            <div class="edu-courses">
-                <span class="small-label">${T('courses')}</span>
-                <div class="tags">${e.courses.map(c => `<span class="tag">${esc(c)}</span>`).join('')}</div>
+            <p class="edu-degree mono">${esc(L(e.degree))} · ${esc(T('stageOf')(current.n))}</p>
+            <div class="progress-top"><span>${T('progress')}</span><b>${pctDone.toFixed(0)}%</b></div>
+            <div class="bar bar-stack"><i data-w="${pctDone}"></i><em data-w="${pctNow}" style="left:${pctDone}%"></em></div>
+            <div class="bar-legend mono">
+                <span><i class="sw done"></i>${num(e.hoursDone)}h ${T('hoursDone')}</span>
+                <span><i class="sw now"></i>${num(e.hoursInProgress)}h ${T('hoursNow')}</span>
+                <span class="dim">${T('of')} ${num(e.hoursTotal)}h</span>
             </div>
+            <p class="edu-count mono"><b>${doneCount}</b> ${esc(T('coursesDone')(doneCount).replace(/^\d+\s*/, ''))}</p>
         </div>
         <div class="panel reveal">
             <span class="panel-label mono">i18n</span>
@@ -300,7 +311,35 @@ function renderEducation() {
                     <div class="bar"><i data-w="${l.pct}"></i></div>
                 </div>`).join('')}
             </div>
+        </div>
+        <div class="curriculum reveal">
+            <h3 class="sub-head mono">// ${T('curriculum')}</h3>
+            <div class="stepper" role="tablist" aria-label="${esc(T('curriculum'))}">
+                ${e.terms.map(t => `
+                <button class="step ${t.status}" role="tab" data-term="${t.n}" aria-selected="${t.n === TERM}">
+                    <span class="step-n">0${t.n}</span>
+                    <span class="step-p mono">${esc(t.period)}</span>
+                </button>`).join('')}
+            </div>
+            <div class="term-panel panel" id="term-panel"></div>
         </div>`;
+    renderTerm();
+}
+
+function renderTerm() {
+    const t = DATA.education.terms.find(x => x.n === TERM);
+    if (!t) return;
+    $('#term-panel').innerHTML = `
+        <div class="term-head">
+            <div>
+                <span class="small-label">${T('stage')} ${t.n} · ${esc(t.period)}</span>
+                <h4>${t.courses.length} ${LANG === 'pt' ? 'disciplinas' : 'courses'}</h4>
+            </div>
+            <span class="badge ${t.status === 'current' ? 'live' : t.status === 'next' ? 'muted' : ''}">${T('st')[t.status]}</span>
+        </div>
+        <ul class="course-list ${t.status}">
+            ${t.courses.map((c, i) => `<li style="--i:${i}"><span class="mono">${String(i + 1).padStart(2, '0')}</span>${esc(L(c))}</li>`).join('')}
+        </ul>`;
 }
 
 function renderContact() {
@@ -340,7 +379,7 @@ function observeReveal() {
                 const el = en.target;
                 el.classList.add('in');
                 if (el.dataset.count !== undefined) countUp(el);
-                $$('.bar i', el).forEach(b => { b.style.width = `${b.dataset.w}%`; });
+                $$('.bar i, .bar em', el).forEach(b => { b.style.width = `${b.dataset.w}%`; });
                 revealObs.unobserve(el);
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
@@ -350,7 +389,7 @@ function observeReveal() {
         revealObs.observe(el);
     });
     // elements already revealed (after a language switch) keep their final state
-    $$('.reveal.in .bar i, .in.reveal .bar i').forEach(b => { b.style.width = `${b.dataset.w}%`; });
+    $$('.reveal.in .bar i, .reveal.in .bar em').forEach(b => { b.style.width = `${b.dataset.w}%`; });
 }
 
 function countUp(el) {
@@ -472,6 +511,13 @@ function bindProjects() {
         if (card) openProject(DATA.projects[Number(card.dataset.idx)]);
     });
     $('#modal').addEventListener('click', e => { if (e.target.closest('[data-close]')) closeModal(); });
+    $('#edu').addEventListener('click', e => {
+        const b = e.target.closest('.step');
+        if (!b) return;
+        TERM = Number(b.dataset.term);
+        $$('.step').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+        renderTerm();
+    });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#modal').hidden) closeModal(); });
 }
 
@@ -591,6 +637,8 @@ function runCmd(raw) {
             break;
         case 'education': case 'edu':
             termPrint(`${esc(DATA.education.institution)} — ${esc(L(DATA.education.degree))}`);
+            DATA.education.terms.filter(t => t.status !== 'next').forEach(t =>
+                termPrint(`<span class="hl">${esc(t.period)}</span> ${t.courses.map(c => esc(L(c))).join(' · ')}`));
             break;
         case 'contact':
             socialList().forEach(s => termPrint(`<span class="hl">${pad(esc(s.label))}</span><a href="${esc(s.href)}" target="_blank" rel="noopener noreferrer">${esc(s.value)}</a>`));
