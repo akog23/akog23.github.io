@@ -6,7 +6,7 @@
 :root {
     --bg: #04050A;
     --bg-2: #080B14;
-    --panel: rgba(12, 18, 32, 0.62);
+    --panel: rgba(10, 15, 27, 0.9);
     --panel-solid: #0A0F1C;
     --line: rgba(0, 229, 255, 0.16);
     --line-strong: rgba(0, 229, 255, 0.42);
@@ -46,23 +46,20 @@ h1, h2, h3 { font-family: var(--f-head); margin: 0; letter-spacing: 0.02em; }
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 
 /* ---------- ambient layers ---------- */
-#bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -3; }
+#bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -3; pointer-events: none; }
 .grain {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.06;
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.05; contain: strict;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.scanlines {
-    position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.35;
-    background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0, 0, 0, 0.18) 2px 3px);
-    mix-blend-mode: multiply;
-}
+.scanlines { display: none; }
 .cursor-glow {
     position: fixed; left: 0; top: 0; width: 520px; height: 520px; z-index: -2; pointer-events: none;
     border-radius: 50%; transform: translate(-50%, -50%);
     background: radial-gradient(circle, rgba(0, 229, 255, 0.10), rgba(139, 92, 255, 0.06) 40%, transparent 70%);
     transition: opacity .4s; opacity: 0;
 }
-body.has-pointer .cursor-glow { opacity: 1; }
+body.has-pointer .cursor-glow { opacity: 0; }
+.cursor-glow { display: none; }
 
 /* ---------- boot ---------- */
 #boot {
@@ -83,8 +80,8 @@ body.has-pointer .cursor-glow { opacity: 1; }
     position: fixed; inset: 0 0 auto 0; height: var(--top); z-index: 50;
     display: flex; align-items: center; justify-content: space-between; gap: 16px;
     padding: 0 clamp(16px, 3vw, 32px);
-    background: linear-gradient(to bottom, rgba(4, 5, 10, .92), rgba(4, 5, 10, .55));
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    background: rgba(4, 5, 10, .94);
+    /* solid background instead of blur: cheaper while scrolling */
     border-bottom: 1px solid var(--line);
 }
 .brand { display: flex; align-items: center; gap: 10px; }
@@ -141,7 +138,6 @@ main { padding-left: var(--side); padding-right: clamp(16px, 5vw, 72px); }
 /* panel with cut corners + gradient border */
 .panel {
     position: relative; padding: 26px; background: var(--panel);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
 }
 .panel::before {
@@ -455,3 +451,8 @@ main { padding-left: var(--side); padding-right: clamp(16px, 5vw, 72px); }
     .modal-actions { justify-content: space-between; }
     .modal-body { padding: 18px 16px; }
 }
+
+/* pause decorative loops when their section is off-screen (set by app.js) */
+.paused .ring, .paused .dot-live, .paused .caret, .paused .kbd, .paused .scroll-hint i { animation-play-state: paused; }
+
+.scroll-hint { display: none; }

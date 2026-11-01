@@ -394,14 +394,20 @@ function startClock() {
 function bindTilt() {
     if (REDUCE || !matchMedia('(hover: hover)').matches) return;
     $$('.proj').forEach(card => {
+        let frame = null, rect = null;
+        card.addEventListener('pointerenter', () => { rect = card.getBoundingClientRect(); });
         card.addEventListener('pointermove', e => {
-            const r = card.getBoundingClientRect();
-            const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-            card.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 6}deg) rotateY(${(x - 0.5) * 8}deg) translateY(-4px)`;
-            card.style.setProperty('--mx', `${x * 100}%`);
-            card.style.setProperty('--my', `${y * 100}%`);
+            if (frame) return;
+            frame = requestAnimationFrame(() => {
+                frame = null;
+                const r = rect || card.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+                card.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 5}deg) rotateY(${(x - 0.5) * 6}deg) translateY(-4px)`;
+                card.style.setProperty('--mx', `${x * 100}%`);
+                card.style.setProperty('--my', `${y * 100}%`);
+            });
         });
-        card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+        card.addEventListener('pointerleave', () => { rect = null; card.style.transform = ''; });
     });
 }
 
@@ -437,11 +443,9 @@ function bindNav() {
 
     $('#lang-btn').addEventListener('click', () => setLang(LANG === 'pt' ? 'en' : 'pt'));
 
-    if (matchMedia('(hover: hover)').matches) {
-        const glow = $('.cursor-glow');
-        document.body.classList.add('has-pointer');
-        window.addEventListener('pointermove', e => { glow.style.transform = `translate(${e.clientX - 260}px, ${e.clientY - 260}px)`; }, { passive: true });
-    }
+    // pause the hero's CSS loops (rings, caret...) once it scrolls out of view
+    const hero = $('#home');
+    new IntersectionObserver(([en]) => hero.classList.toggle('paused', !en.isIntersecting), { threshold: 0.05 }).observe(hero);
 }
 
 function setLang(lang) {
