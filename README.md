@@ -2,7 +2,7 @@
 
 Portfólio pessoal de **Isaac Koga Carone**, desenvolvedor full-stack (React · Java · Python) e estudante de Sistemas de Informação no Mackenzie.
 
-🔗 **https://akog777.github.io**
+🔗 **https://akog23.github.io**
 
 ## Destaques
 
