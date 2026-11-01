@@ -1,31 +1,13 @@
 {
   "profile": {
     "name": "Isaac Koga Carone",
-    "shortName": "Isaac Koga",
-    "handle": "akog777",
     "github": "akog777",
     "linkedin": "https://www.linkedin.com/in/iskoga",
     "email": "akog.sac@gmail.com",
     "location": "São Paulo, SP — Brasil",
-    "coords": "23.55°S · 46.63°W",
-    "timezone": "America/Sao_Paulo",
     "status": {
       "pt": "Trainee @ Management Solutions",
       "en": "Trainee @ Management Solutions"
-    },
-    "roles": {
-      "pt": [
-        "Desenvolvedor Full-Stack",
-        "React · Java · Python",
-        "Automação de Processos",
-        "Estudante de Sistemas de Informação"
-      ],
-      "en": [
-        "Full-Stack Developer",
-        "React · Java · Python",
-        "Process Automation",
-        "Information Systems Student"
-      ]
     },
     "tagline": {
       "pt": "Gosto de transformar processos manuais e bagunçados em sistemas limpos e escaláveis — de interfaces em React a back-ends em Spring Boot e automações em Python que devolvem horas ao time.",
@@ -34,6 +16,16 @@
     "summary": {
       "pt": "Estudante de Sistemas de Informação no Mackenzie com experiência em desenvolvimento full-stack (React.js, Java/Spring Boot, APIs REST) e em automação de processos em ambiente corporativo. Perfil analítico, com base sólida em SQL, lógica de programação e troubleshooting — e uso de IA generativa para acelerar entregas.",
       "en": "Information Systems student at Mackenzie with hands-on experience in full-stack development (React.js, Java/Spring Boot, REST APIs) and corporate process automation. Analytical profile with a solid base in SQL, programming logic and troubleshooting — using generative AI to ship faster."
+    },
+    "headline": {
+      "pt": {
+        "lead": "Desenvolvedor full-stack que transforma processos manuais em",
+        "accent": "sistemas que escalam."
+      },
+      "en": {
+        "lead": "Full-stack developer turning manual processes into",
+        "accent": "systems that scale."
+      }
     }
   },
   "metrics": [

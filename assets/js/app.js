@@ -1,83 +1,82 @@
-import { startBackground } from './bg.js';
 import { getRepos, getReadme } from './github.js';
 
 /* =========================================================================
-   UI strings (content itself lives in data/content.json)
+   Interface strings (the content itself lives in data/content.json)
    ========================================================================= */
 const UI = {
     pt: {
-        online: 'SISTEMA ONLINE',
-        'nav.home': 'Início', 'nav.about': 'Perfil', 'nav.experience': 'Experiência', 'nav.projects': 'Projetos',
-        'nav.skills': 'Skills', 'nav.education': 'Formação', 'nav.contact': 'Contato',
-        'hero.eyebrow': 'PORTFÓLIO // v2.0', 'hero.cta1': 'Ver projetos', 'hero.cta2': 'Abrir terminal', 'hero.scroll': 'ROLAR',
-        'hud.status': 'STATUS', 'hud.location': 'LOCAL', 'hud.coords': 'COORD.', 'hud.stack': 'CORE', 'hud.edu': 'EDU',
-        'about.title': 'Perfil', 'code.comment': 'rotina semanal — antes vs. depois',
-        'exp.title': 'Experiência', 'proj.title': 'Projetos', 'skills.title': 'Skills', 'certs.title': '// CERTIFICAÇÕES',
-        'edu.title': 'Formação', 'contact.title': 'Contato', 'footer.built': 'Feito à mão com HTML, CSS e JavaScript puro',
-        current: 'ATUAL', featured: 'DESTAQUE', internal: 'interno', open: 'ABRIR', view: 'VER', updated: 'atualizado',
-        cats: { all: 'Todos', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automação', mobile: 'Mobile', game: 'Games' },
-        ghOk: n => `// ${n} repositórios sincronizados ao vivo com github.com/`,
-        ghFail: '// GitHub indisponível agora — exibindo dados locais. Veja em github.com/',
-        progress: 'PROGRESSO DO CURSO', courses: 'Disciplinas em destaque', hoursDone: 'concluídas', hoursNow: 'em curso', of: 'de', stage: 'Etapa', stageOf: n => `${n}ª de 8 etapas`, curriculum: 'GRADE CURRICULAR', st: { done: 'Concluída', current: 'Cursando agora', next: 'Próxima' }, coursesDone: n => `${n} disciplinas concluídas`, langs: 'Idiomas', hoursUnit: 'horas',
-        readmeLoading: 'carregando README', readmeFail: 'Não foi possível carregar o README agora.', readmeShort: 'Este repositório tem um README curto — abra no GitHub para ver o código.',
-        internalNote: 'Projeto interno: o código não é público.',
-        copy: 'COPIADO', email: 'E-mail', linkedin: 'LinkedIn', github: 'GitHub',
+        skip: 'Pular para o conteúdo',
+        'nav.overview': 'Visão geral', 'nav.experience': 'Experiência', 'nav.projects': 'Projetos',
+        'nav.skills': 'Competências', 'nav.education': 'Formação', 'nav.contact': 'Contato',
+        'hero.cta1': 'Ver projetos', 'hero.cta2': 'Entrar em contato',
+        'ov.eyebrow': 'Visão geral', 'ov.title': 'Impacto em <em>números</em>',
+        'exp.eyebrow': 'Experiência', 'exp.title': 'Onde já <em>entreguei</em>',
+        'proj.eyebrow': 'Projetos', 'proj.title': 'Coisas que <em>construí</em>',
+        'skills.eyebrow': 'Competências', 'skills.title': 'Stack &amp; <em>certificações</em>',
+        'edu.eyebrow': 'Formação', 'edu.title': 'Base <em>acadêmica</em>',
+        'contact.eyebrow': 'Contato', 'contact.title': 'Vamos construir algo <em>juntos?</em>',
+        'contact.sub': 'Aberto a conversas sobre oportunidades, projetos e networking.',
+        'footer.top': 'Voltar ao topo ↑',
+        facts: { location: 'Localização', now: 'Atualmente', edu: 'Formação', langs: 'Idiomas' },
+        langsValue: 'Português · Inglês',
+        about: 'Sobre mim', nowLabel: 'Atualmente', stackLabel: 'Stack principal',
         points: [
             ['Full-Stack', 'React · Spring Boot · APIs REST'],
             ['Automação', 'Python · Playwright · VBA'],
-            ['Dados', 'SQL · PostgreSQL · troubleshooting'],
+            ['Dados', 'SQL · PostgreSQL'],
             ['IA Generativa', 'para acelerar entregas'],
         ],
-        term: {
-            welcome: 'IK//OS terminal v2.0 — digite <span class="hl">help</span> para ver os comandos.',
-            help: [
-                ['whoami', 'quem sou eu'], ['experience', 'experiência profissional'], ['projects', 'lista de projetos'],
-                ['skills', 'stack técnica'], ['education', 'formação'], ['contact', 'como falar comigo'],
-                ['open <projeto>', 'abre o README de um projeto'], ['github | linkedin | email', 'abre o link'],
-                ['lang en', 'switch to English'], ['clear', 'limpa a tela'],
-            ],
-            notFound: c => `comando não encontrado: ${c}. Digite <span class="hl">help</span>.`,
-            noProject: 'projeto não encontrado. Use <span class="hl">projects</span> para ver os nomes.',
-            hire: 'Permissão concedida ✓ Envie um e-mail para <a href="mailto:{email}">{email}</a> e vamos conversar.',
-            opening: 'abrindo',
-        },
+        code: { eyebrow: 'Na prática', title: 'Rotinas de horas viraram minutos', text: 'Na Huawei, robôs em Python + Playwright e macros VBA assumiram exportações de relatórios e atualizações de bases que eram feitas à mão.', comment: 'rotina semanal — antes vs. depois' },
+        current: 'Atual', featured: 'Destaque', internal: 'Projeto interno', updated: 'Atualizado em', details: 'Ver detalhes',
+        cats: { all: 'Todos', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automação', mobile: 'Mobile', game: 'Games' },
+        ghOk: n => `${n} repositórios sincronizados com o GitHub · `,
+        ghFail: 'GitHub indisponível no momento — exibindo dados locais · ',
+        hours: 'horas',
+        progress: 'Progresso do curso', hoursDone: 'concluídas', hoursNow: 'em curso', of: 'de',
+        stageOf: n => `${n}ª de 8 etapas`, coursesDone: 'disciplinas concluídas', inProgress: 'disciplinas em curso',
+        languages: 'Idiomas', curriculum: 'Grade curricular', stage: 'Etapa', coursesN: n => `${n} disciplinas`,
+        st: { done: 'Concluída', current: 'Cursando', next: 'Próxima' },
+        readmeLoading: 'Carregando README…', readmeFail: 'Não foi possível carregar o README agora.', readmeShort: 'Este repositório tem um README curto — abra no GitHub para ver o código.',
+        internalNote: 'Projeto interno da empresa: o código não é público.',
+        copyMail: 'Copiar e-mail', copied: 'E-mail copiado ✓',
+        themeLabel: 'Alternar tema', langLabel: 'Switch to English',
     },
     en: {
-        online: 'SYSTEM ONLINE',
-        'nav.home': 'Home', 'nav.about': 'Profile', 'nav.experience': 'Experience', 'nav.projects': 'Projects',
+        skip: 'Skip to content',
+        'nav.overview': 'Overview', 'nav.experience': 'Experience', 'nav.projects': 'Projects',
         'nav.skills': 'Skills', 'nav.education': 'Education', 'nav.contact': 'Contact',
-        'hero.eyebrow': 'PORTFOLIO // v2.0', 'hero.cta1': 'View projects', 'hero.cta2': 'Open terminal', 'hero.scroll': 'SCROLL',
-        'hud.status': 'STATUS', 'hud.location': 'LOCATION', 'hud.coords': 'COORDS', 'hud.stack': 'CORE', 'hud.edu': 'EDU',
-        'about.title': 'Profile', 'code.comment': 'weekly routine — before vs. after',
-        'exp.title': 'Experience', 'proj.title': 'Projects', 'skills.title': 'Skills', 'certs.title': '// CERTIFICATIONS',
-        'edu.title': 'Education', 'contact.title': 'Contact', 'footer.built': 'Hand-built with plain HTML, CSS and JavaScript',
-        current: 'CURRENT', featured: 'FEATURED', internal: 'internal', open: 'OPEN', view: 'VIEW', updated: 'updated',
-        cats: { all: 'All', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automation', mobile: 'Mobile', game: 'Games' },
-        ghOk: n => `// ${n} repositories synced live from github.com/`,
-        ghFail: '// GitHub is unavailable right now — showing local data. See github.com/',
-        progress: 'DEGREE PROGRESS', courses: 'Highlighted courses', hoursDone: 'completed', hoursNow: 'in progress', of: 'of', stage: 'Semester', stageOf: n => `semester ${n} of 8`, curriculum: 'CURRICULUM', st: { done: 'Completed', current: 'In progress', next: 'Upcoming' }, coursesDone: n => `${n} courses completed`, langs: 'Languages', hoursUnit: 'hours',
-        readmeLoading: 'loading README', readmeFail: "Couldn't load the README right now.", readmeShort: 'This repository has a short README — open it on GitHub to browse the code.',
-        internalNote: 'Internal project: the code is not public.',
-        copy: 'COPIED', email: 'Email', linkedin: 'LinkedIn', github: 'GitHub',
+        'hero.cta1': 'View projects', 'hero.cta2': 'Get in touch',
+        'ov.eyebrow': 'Overview', 'ov.title': 'Impact in <em>numbers</em>',
+        'exp.eyebrow': 'Experience', 'exp.title': 'Where I’ve <em>delivered</em>',
+        'proj.eyebrow': 'Projects', 'proj.title': 'Things I’ve <em>built</em>',
+        'skills.eyebrow': 'Skills', 'skills.title': 'Stack &amp; <em>certifications</em>',
+        'edu.eyebrow': 'Education', 'edu.title': 'Academic <em>background</em>',
+        'contact.eyebrow': 'Contact', 'contact.title': 'Let’s build something <em>together?</em>',
+        'contact.sub': 'Open to conversations about opportunities, projects and networking.',
+        'footer.top': 'Back to top ↑',
+        facts: { location: 'Location', now: 'Currently', edu: 'Education', langs: 'Languages' },
+        langsValue: 'Portuguese · English',
+        about: 'About me', nowLabel: 'Currently', stackLabel: 'Core stack',
         points: [
             ['Full-Stack', 'React · Spring Boot · REST APIs'],
             ['Automation', 'Python · Playwright · VBA'],
-            ['Data', 'SQL · PostgreSQL · troubleshooting'],
+            ['Data', 'SQL · PostgreSQL'],
             ['Generative AI', 'to ship faster'],
         ],
-        term: {
-            welcome: 'IK//OS terminal v2.0 — type <span class="hl">help</span> to list commands.',
-            help: [
-                ['whoami', 'who I am'], ['experience', 'work history'], ['projects', 'project list'],
-                ['skills', 'tech stack'], ['education', 'education'], ['contact', 'how to reach me'],
-                ['open <project>', "opens a project's README"], ['github | linkedin | email', 'opens the link'],
-                ['lang pt', 'mudar para português'], ['clear', 'clear the screen'],
-            ],
-            notFound: c => `command not found: ${c}. Type <span class="hl">help</span>.`,
-            noProject: 'project not found. Use <span class="hl">projects</span> to list names.',
-            hire: 'Permission granted ✓ Email <a href="mailto:{email}">{email}</a> and let\'s talk.',
-            opening: 'opening',
-        },
+        code: { eyebrow: 'In practice', title: 'Hour-long routines became minutes', text: 'At Huawei, Python + Playwright bots and VBA macros took over report exports and database updates that used to be done by hand.', comment: 'weekly routine — before vs. after' },
+        current: 'Current', featured: 'Featured', internal: 'Internal project', updated: 'Updated', details: 'View details',
+        cats: { all: 'All', backend: 'Back-end', web: 'Web', cloud: 'Cloud', automation: 'Automation', mobile: 'Mobile', game: 'Games' },
+        ghOk: n => `${n} repositories synced from GitHub · `,
+        ghFail: 'GitHub is unavailable right now — showing local data · ',
+        hours: 'hours',
+        progress: 'Degree progress', hoursDone: 'completed', hoursNow: 'in progress', of: 'of',
+        stageOf: n => `semester ${n} of 8`, coursesDone: 'courses completed', inProgress: 'courses in progress',
+        languages: 'Languages', curriculum: 'Curriculum', stage: 'Semester', coursesN: n => `${n} courses`,
+        st: { done: 'Completed', current: 'In progress', next: 'Upcoming' },
+        readmeLoading: 'Loading README…', readmeFail: "Couldn't load the README right now.", readmeShort: 'This repository has a short README — open it on GitHub to browse the code.',
+        internalNote: 'Internal company project: the code is not public.',
+        copyMail: 'Copy email', copied: 'Email copied ✓',
+        themeLabel: 'Toggle theme', langLabel: 'Mudar para português',
     },
 };
 
@@ -85,6 +84,7 @@ const ICON = {
     github: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12.02c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85 0 1.71.12 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10.02 10.02 0 0022 12.02C22 6.48 17.52 2 12 2z"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zM8 19H5V8h3v11zM6.5 6.73a1.76 1.76 0 110-3.53 1.76 1.76 0 010 3.53zM20 19h-3v-5.6c0-3.37-4-3.12-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19z"/></svg>',
     email: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A2.5 2.5 0 014.5 3h15A2.5 2.5 0 0122 5.5v13a2.5 2.5 0 01-2.5 2.5h-15A2.5 2.5 0 012 18.5v-13zM4.3 5L12 11.2 19.7 5H4.3zM20 6.8l-7.4 6a1 1 0 01-1.2 0L4 6.8v11.7c0 .3.2.5.5.5h15c.3 0 .5-.2.5-.5V6.8z"/></svg>',
+    arrow: '<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>',
 };
 
 /* =========================================================================
@@ -94,234 +94,226 @@ const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const HOVER = matchMedia('(hover: hover)').matches;
 
-let DATA = null;
-let LANG = 'pt';
-let REPOS = null;      // GitHub data (null until loaded / on failure)
-let GH_FAILED = false;
-let FILTER = 'all';
+let DATA = null, LANG = 'pt', REPOS = null, GH_FAILED = false, FILTER = 'all', TERM = null;
 
 const L = v => (v && typeof v === 'object' && !Array.isArray(v) && ('pt' in v || 'en' in v)) ? (v[LANG] ?? v.pt) : v;
-const T = key => UI[LANG][key] ?? key;
+const T = k => UI[LANG][k] ?? k;
+const locale = () => (LANG === 'pt' ? 'pt-BR' : 'en-US');
+const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch { /* ignore */ } },
+};
 
-function initialLang() {
-    try {
-        const saved = localStorage.getItem('lang');
-        if (saved === 'pt' || saved === 'en') return saved;
-    } catch { /* storage blocked */ }
-    return (navigator.language || 'pt').toLowerCase().startsWith('pt') ? 'pt' : 'en';
+function toast(msg) {
+    const el = $('#toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toast.t);
+    toast.t = setTimeout(() => el.classList.remove('show'), 1800);
 }
 
 /* =========================================================================
-   Boot
-   ========================================================================= */
-async function boot() {
-    const el = $('#boot');
-    let seen = false;
-    try { seen = sessionStorage.getItem('booted') === '1'; } catch { /* ignore */ }
-    if (REDUCE || seen) { el.classList.add('done'); return; }
-
-    const lines = [
-        'loading kernel ............ <span class="ok">ok</span>',
-        'mounting /projects ........ <span class="ok">ok</span>',
-        'linking github://akog777 .. <span class="ok">ok</span>',
-        'calibrating HUD ........... <span class="ok">ok</span>',
-        '<span class="ok">welcome, visitor.</span>',
-    ];
-    const log = $('#boot-log'), bar = $('.boot-bar i');
-    for (let i = 0; i < lines.length; i++) {
-        log.innerHTML += lines[i] + '\n';
-        bar.style.width = `${((i + 1) / lines.length) * 100}%`;
-        await new Promise(r => setTimeout(r, 190));
-    }
-    await new Promise(r => setTimeout(r, 250));
-    el.classList.add('done');
-    try { sessionStorage.setItem('booted', '1'); } catch { /* ignore */ }
-}
-
-/* =========================================================================
-   Render
+   Rendering
    ========================================================================= */
 function applyStatic() {
     document.documentElement.lang = LANG === 'pt' ? 'pt-BR' : 'en';
     $$('[data-i18n]').forEach(el => { el.textContent = T(el.dataset.i18n); });
-    $('#lang-btn').textContent = LANG === 'pt' ? 'EN' : 'PT';
-    $('#lang-btn').setAttribute('aria-label', LANG === 'pt' ? 'Switch to English' : 'Mudar para português');
+    $$('[data-i18n-html]').forEach(el => { el.innerHTML = T(el.dataset.i18nHtml); });
+    $('.skip').textContent = T('skip');
+    const lb = $('#lang-btn');
+    lb.textContent = LANG === 'pt' ? 'EN' : 'PT';
+    lb.setAttribute('aria-label', T('langLabel'));
+    $('#theme-btn').setAttribute('aria-label', T('themeLabel'));
+    $('#footer-loc').textContent = DATA.profile.location;
 }
 
-function socialList() {
+const socials = () => {
     const p = DATA.profile;
     return [
-        { key: 'github', label: T('github'), value: `github.com/${p.github}`, href: `https://github.com/${p.github}` },
-        { key: 'linkedin', label: T('linkedin'), value: p.linkedin.replace(/^https?:\/\/(www\.)?/, ''), href: p.linkedin },
-        { key: 'email', label: T('email'), value: p.email, href: `mailto:${p.email}` },
+        { key: 'linkedin', label: 'LinkedIn', href: p.linkedin, value: p.linkedin.replace(/^https?:\/\/(www\.)?/, '') },
+        { key: 'github', label: 'GitHub', href: `https://github.com/${p.github}`, value: `github.com/${p.github}` },
+        { key: 'email', label: 'E-mail', href: `mailto:${p.email}`, value: p.email },
     ];
-}
+};
 
 function renderHero() {
-    const p = DATA.profile;
-    $('#hero-summary').textContent = L(p.tagline || p.summary);
-    $('#hud-status').textContent = L(p.status);
-    $('#hud-location').textContent = p.location;
-    $('#hud-coords').textContent = p.coords;
-    $('#hud-socials').innerHTML = socialList().map(s => `
-        <a class="icon-btn" href="${esc(s.href)}" ${s.key !== 'email' ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="${esc(s.label)}">${ICON[s.key]}</a>`).join('');
-
-    // ring ticks (built once)
-    const g = $('.hud-ring .ticks');
-    if (g && !g.childElementCount) {
-        let html = '';
-        for (let i = 0; i < 60; i++) {
-            const a = (i / 60) * Math.PI * 2, r1 = 98, r2 = i % 5 ? 101 : 106;
-            html += `<line x1="${100 + Math.cos(a) * r1}" y1="${100 + Math.sin(a) * r1}" x2="${100 + Math.cos(a) * r2}" y2="${100 + Math.sin(a) * r2}"/>`;
-        }
-        g.innerHTML = html;
-    }
+    const p = DATA.profile, h = L(p.headline);
+    const cur = DATA.education.terms.find(t => t.status === 'current');
+    $('#hero-status').textContent = `${L(p.status)} · ${p.location.split('—')[0].trim()}`;
+    $('#hero-title').innerHTML = `${esc(h.lead)} <em>${esc(h.accent)}</em>`;
+    $('#hero-sub').textContent = L(p.summary);
+    $('#hero-social').innerHTML = socials().map(s => `
+        <a class="social" href="${esc(s.href)}" ${s.key !== 'email' ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="${s.label}">${ICON[s.key]}</a>`).join('');
+    const f = T('facts');
+    const facts = [
+        [f.location, p.location],
+        [f.now, 'Trainee · Management Solutions'],
+        [f.edu, `${LANG === 'pt' ? 'SI' : 'B.Sc. IS'} · Mackenzie (${cur ? T('stageOf')(cur.n) : ''})`],
+        [f.langs, T('langsValue')],
+    ];
+    $('#hero-facts').innerHTML = facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
 }
 
-function renderMetrics() {
-    $('#metrics').innerHTML = DATA.metrics.map(m => {
-        const value = m.id === 'repos' ? (REPOS ? REPOS.filter(r => !r.fork).length : m.fallback) : m.value;
-        return `
-        <div class="metric reveal" data-count="${value}">
-            <div class="metric-value">${m.prefix ? `<span class="p">${esc(m.prefix)}</span>` : ''}<span class="num">${REDUCE ? value : 0}</span>${m.suffix ? `<span class="u">${esc(m.suffix)}</span>` : ''}</div>
-            <div class="metric-label">${esc(L(m.label))}</div>
+function renderBento() {
+    const m = DATA.metrics;
+    const val = x => x.id === 'repos' ? (REPOS ? REPOS.filter(r => !r.fork).length : x.fallback) : x.value;
+    const metric = (x, cls) => `
+        <div class="card b b-metric ${cls} reveal" data-count="${val(x)}">
+            <span class="metric-label">${esc(L(x.label))}</span>
+            <div class="metric-value">${x.prefix ? `<span class="pre">${esc(x.prefix)}</span>` : ''}<span class="num">${REDUCE ? val(x) : 0}</span>${x.suffix ? `<small>${esc(x.suffix)}</small>` : ''}</div>
         </div>`;
-    }).join('');
+    const core = ['React.js', 'Java', 'Spring Boot', 'Python', 'SQL', 'PostgreSQL', 'Playwright', 'VBA', 'AWS', 'Git'];
+    const c = T('code');
+    $('#bento').innerHTML = `
+        <div class="card b b-about reveal">
+            <span class="metric-label">${T('about')}</span>
+            <h3>${esc(DATA.profile.name)}</h3>
+            <p>${esc(L(DATA.profile.tagline))}</p>
+            <div class="points">${T('points').map(([a, b]) => `<div class="point"><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join('')}</div>
+        </div>
+        ${metric(m[0], '')}
+        ${metric(m[1], '')}
+        ${metric(m[2], 'half')}
+        ${metric(m[3], 'half')}
+        <div class="card b b-now reveal">
+            <div class="now-logo">MS</div>
+            <div>
+                <div class="now-label">${T('nowLabel')}</div>
+                <div class="now-title">Trainee · Management Solutions</div>
+                <div class="now-label">${esc(L(DATA.experience[0].period))}</div>
+            </div>
+        </div>
+        <div class="card b b-stack reveal">
+            <span class="metric-label">${T('stackLabel')}</span>
+            <div class="tags">${core.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
+        </div>
+        <div class="card b b-code reveal">
+            <div class="code-copy">
+                <span class="eyebrow">${esc(c.eyebrow)}</span>
+                <h3>${esc(c.title)}</h3>
+                <p>${esc(c.text)}</p>
+            </div>
+            <div class="code-win">
+                <div class="code-bar"><i></i><i></i><i></i><span>export_report.py</span></div>
+<pre><span class="c"># ${esc(c.comment)}</span>
+<span class="k">from</span> playwright.sync_api <span class="k">import</span> sync_playwright
+
+<span class="k">def</span> <span class="f">export_report</span>(page, filters):
+    page.goto(ERP_URL)
+    page.fill(<span class="s">"#filter"</span>, filters)
+    page.click(<span class="s">"text=Export"</span>)
+
+<span class="c"># manual:     3–4 h</span>
+<span class="c"># automated: </span><span class="ok">≤ 10 min ✓</span></pre>
+            </div>
+        </div>`;
 }
 
-function renderAbout() {
-    $('#about-summary').textContent = L(DATA.profile.summary);
-    $('#about-points').innerHTML = T('points').map(([a, b]) => `
-        <li><span class="ico">▹</span><span><b>${esc(a)}</b>${esc(b)}</span></li>`).join('');
-}
-
-function renderExperience() {
-    $('#timeline').innerHTML = DATA.experience.map(j => `
-        <article class="job reveal ${j.current ? 'current' : ''}">
-            <span class="job-node" aria-hidden="true"></span>
-            <div class="panel">
-                <span class="panel-label mono">${esc(L(j.type))}</span>
-                <div class="job-top">
-                    <h3 class="job-company">${esc(j.company)}</h3>
-                    <span class="job-period mono">${esc(L(j.period))}</span>
-                </div>
-                <p class="job-role">${esc(L(j.role))} ${j.current ? `<span class="badge live">${T('current')}</span>` : ''}</p>
+function renderJobs() {
+    $('#jobs').innerHTML = DATA.experience.map(j => `
+        <li class="job reveal">
+            <div class="job-when">${esc(L(j.period))}${j.current ? `<br><span class="now">${T('current')}</span>` : ''}</div>
+            <div>
+                <div class="job-head"><h3>${esc(j.company)}</h3><span class="job-type">${esc(L(j.type))}</span></div>
+                <p class="job-role">${esc(L(j.role))}</p>
                 <ul>${L(j.bullets).map(b => `<li>${esc(b)}</li>`).join('')}</ul>
                 <div class="tags">${j.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
             </div>
-        </article>`).join('');
-}
-
-function projectList() {
-    return DATA.projects.map(p => {
-        const gh = REPOS?.find(r => r.name === p.repo);
-        return { ...p, gh };
-    });
+        </li>`).join('');
 }
 
 function renderFilters() {
-    const cats = T('cats');
-    const counts = { all: DATA.projects.length };
+    const cats = T('cats'), counts = { all: DATA.projects.length };
     DATA.projects.forEach(p => { counts[p.cat] = (counts[p.cat] || 0) + 1; });
     $('#filters').innerHTML = Object.keys(cats).filter(c => counts[c]).map(c => `
-        <button class="filter" role="tab" data-cat="${c}" aria-selected="${c === FILTER}">${esc(cats[c])}<span class="n">${counts[c]}</span></button>`).join('');
+        <button class="filter" type="button" role="tab" data-cat="${c}" aria-selected="${c === FILTER}">${esc(cats[c])}<span class="n">${counts[c]}</span></button>`).join('');
 }
 
 function renderProjects() {
     const cats = T('cats');
-    $('#projects-grid').innerHTML = projectList().map((p, i) => {
-        const date = p.gh?.pushed ? new Date(p.gh.pushed).toLocaleDateString(LANG === 'pt' ? 'pt-BR' : 'en-US', { month: 'short', year: 'numeric' }) : null;
-        const foot = p.internal
-            ? `<span>🔒 ${T('internal')}</span><span class="go">${T('view')} →</span>`
-            : `<span>${p.repo ? (date ? `${T('updated')} ${esc(date)}` : `github/${esc(p.repo)}`) : esc((p.url || '').replace('https://', ''))}</span><span class="go">${T('open')} →</span>`;
+    let bigUsed = false;
+    $('#projects-grid').innerHTML = DATA.projects.map((p, i) => {
+        const gh = REPOS?.find(r => r.name === p.repo);
+        const date = gh?.pushed ? new Date(gh.pushed).toLocaleDateString(locale(), { month: 'short', year: 'numeric' }) : null;
+        const big = p.featured && !bigUsed && (bigUsed = true);
+        const left = p.internal ? `🔒 ${T('internal')}` : p.repo ? (date ? `${T('updated')} ${date}` : `github/${p.repo}`) : (p.url || '').replace('https://', '');
         return `
-        <button class="proj reveal ${FILTER !== 'all' && p.cat !== FILTER ? 'hide' : ''}" data-idx="${i}" data-cat="${p.cat}">
-            <div class="panel">
-                <div class="proj-top">
-                    <span class="proj-cat">${esc(cats[p.cat] || p.cat)}</span>
-                    ${p.featured ? `<span class="proj-star">★ ${T('featured')}</span>` : ''}
-                </div>
-                <h3>${esc(L(p.title))}</h3>
-                <p>${esc(L(p.desc))}</p>
-                <div class="tags">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
-                <div class="proj-foot">${foot}</div>
+        <button type="button" class="card hoverable spot proj ${big ? 'big' : ''} reveal ${FILTER !== 'all' && p.cat !== FILTER ? 'hide' : ''}" data-idx="${i}" data-cat="${p.cat}">
+            <div class="proj-top">
+                <span class="proj-cat">${esc(cats[p.cat] || p.cat)}</span>
+                ${p.featured ? `<span class="proj-star">${T('featured')}</span>` : ''}
             </div>
+            <h3>${esc(L(p.title))}${ICON.arrow}</h3>
+            <p>${esc(L(p.desc))}</p>
+            <div class="tags">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
+            <div class="proj-foot"><span>${esc(left)}</span><span>${T('details')} →</span></div>
         </button>`;
     }).join('');
 
-    const note = $('#gh-note');
-    const user = DATA.profile.github;
-    note.innerHTML = REPOS
-        ? `${esc(T('ghOk')(REPOS.filter(r => !r.fork).length))}<a href="https://github.com/${user}" target="_blank" rel="noopener noreferrer">${user}</a>`
-        : GH_FAILED ? `${esc(T('ghFail'))}<a href="https://github.com/${user}" target="_blank" rel="noopener noreferrer">${user}</a>` : '';
-    bindTilt();
+    const user = DATA.profile.github, link = `<a href="https://github.com/${user}" target="_blank" rel="noopener noreferrer">github.com/${user}</a>`;
+    $('#gh-note').innerHTML = REPOS ? esc(T('ghOk')(REPOS.filter(r => !r.fork).length)) + link : GH_FAILED ? esc(T('ghFail')) + link : '';
+    bindSpotlight($('#projects-grid'));
 }
 
 function renderSkills() {
-    $('#skills-grid').innerHTML = DATA.skills.map((s, i) => `
-        <div class="panel skill-mod reveal">
-            <h3><span class="n">0${i + 1}</span>${esc(L(s.title))}</h3>
-            <div class="skill-list">${s.items.map(it => `<span class="skill">${esc(it)}</span>`).join('')}</div>
+    $('#skills-list').innerHTML = DATA.skills.map(s => `
+        <div class="skill-row reveal">
+            <h3>${esc(L(s.title))}</h3>
+            <div class="tags">${s.items.map(it => `<span class="tag">${esc(it)}</span>`).join('')}</div>
         </div>`).join('');
     $('#certs').innerHTML = DATA.certifications.map(c => `
-        <div class="cert reveal">
+        <div class="card cert reveal">
             <span class="cert-issuer">${esc(c.issuer)}</span>
             <span class="cert-title">${esc(L(c.title))}</span>
-            <span class="cert-hours"><b>${c.hours}</b> ${T('hoursUnit')}</span>
+            <span class="cert-hours">${c.hours} ${T('hours')}</span>
         </div>`).join('');
 }
-
-let TERM = null;   // selected semester in the curriculum stepper
 
 function renderEducation() {
     const e = DATA.education;
     const start = new Date(`${e.start}T12:00:00`), end = new Date(`${e.end}T12:00:00`);
-    const loc = LANG === 'pt' ? 'pt-BR' : 'en-US';
-    const fmt = d => d.toLocaleDateString(loc, { month: 'short', year: 'numeric' });
-    const pctDone = (e.hoursDone / e.hoursTotal) * 100;
-    const pctNow = (e.hoursInProgress / e.hoursTotal) * 100;
-    const current = e.terms.find(t => t.status === 'current') || e.terms[0];
-    const doneCount = e.terms.filter(t => t.status === 'done').reduce((n, t) => n + t.courses.length, 0);
-    if (TERM === null) TERM = current.n;
-    const num = n => n.toLocaleString(loc);
+    const fmt = d => d.toLocaleDateString(locale(), { month: 'short', year: 'numeric' });
+    const num = n => n.toLocaleString(locale());
+    const pctDone = (e.hoursDone / e.hoursTotal) * 100, pctNow = (e.hoursInProgress / e.hoursTotal) * 100;
+    const cur = e.terms.find(t => t.status === 'current') || e.terms[0];
+    const done = e.terms.filter(t => t.status === 'done').reduce((n, t) => n + t.courses.length, 0);
+    if (TERM === null) TERM = cur.n;
 
     $('#edu').innerHTML = `
-        <div class="panel reveal">
-            <span class="panel-label mono">B.Sc.</span>
-            <span class="small-label">${esc(fmt(start))} — ${esc(fmt(end))}</span>
-            <h3 class="edu-inst">${esc(e.institution)}</h3>
-            <p class="edu-degree mono">${esc(L(e.degree))} · ${esc(T('stageOf')(current.n))}</p>
-            <div class="progress-top"><span>${T('progress')}</span><b>${pctDone.toFixed(0)}%</b></div>
-            <div class="bar bar-stack"><i data-w="${pctDone}"></i><em data-w="${pctNow}" style="left:${pctDone}%"></em></div>
-            <div class="bar-legend mono">
-                <span><i class="sw done"></i>${num(e.hoursDone)}h ${T('hoursDone')}</span>
-                <span><i class="sw now"></i>${num(e.hoursInProgress)}h ${T('hoursNow')}</span>
-                <span class="dim">${T('of')} ${num(e.hoursTotal)}h</span>
+        <div class="edu-top">
+            <div class="card edu-main reveal">
+                <span class="edu-dates">${esc(fmt(start))} — ${esc(fmt(end))}</span>
+                <h3 class="edu-inst">${esc(e.institution)}</h3>
+                <p class="edu-degree">${esc(L(e.degree))} · ${esc(T('stageOf')(cur.n))}</p>
+                <div class="progress-row"><span>${T('progress')}</span><b>${pctDone.toFixed(0)}%</b></div>
+                <div class="bar"><i data-w="${pctDone}"></i><em data-w="${pctNow}" style="left:${pctDone}%"></em></div>
+                <div class="legend">
+                    <span><i class="sw" style="background:var(--accent)"></i>${num(e.hoursDone)}h ${T('hoursDone')}</span>
+                    <span><i class="sw" style="background:var(--ok)"></i>${num(e.hoursInProgress)}h ${T('hoursNow')}</span>
+                    <span>${T('of')} ${num(e.hoursTotal)}h</span>
+                </div>
             </div>
-            <p class="edu-count mono"><b>${doneCount}</b> ${esc(T('coursesDone')(doneCount).replace(/^\d+\s*/, ''))}</p>
-        </div>
-        <div class="panel reveal">
-            <span class="panel-label mono">i18n</span>
-            <span class="small-label">${T('langs')}</span>
-            <div style="margin-top:18px">
-                ${e.languages.map(l => `
-                <div class="lang-row">
-                    <div class="lang-top"><b>${esc(L(l.name))}</b><span>${esc(L(l.level))}</span></div>
-                    <div class="bar"><i data-w="${l.pct}"></i></div>
-                </div>`).join('')}
+            <div class="edu-stats">
+                <div class="card stat reveal"><b>${done}</b><span>${T('coursesDone')} · ${cur.courses.length} ${T('inProgress')}</span></div>
+                <div class="card stat reveal">
+                    <span>${T('languages')}</span>
+                    ${e.languages.map(l => `
+                    <div class="lang"><b style="font:600 15px var(--f-head)">${esc(L(l.name))}</b><span>${esc(L(l.level))}</span></div>
+                    <div class="bar"><i data-w="${l.pct}"></i></div>`).join('')}
+                </div>
             </div>
         </div>
-        <div class="curriculum reveal">
-            <h3 class="sub-head mono">// ${T('curriculum')}</h3>
+        <div class="card curriculum reveal">
+            <div class="curriculum-head"><h3>${T('curriculum')}</h3></div>
             <div class="stepper" role="tablist" aria-label="${esc(T('curriculum'))}">
                 ${e.terms.map(t => `
-                <button class="step ${t.status}" role="tab" data-term="${t.n}" aria-selected="${t.n === TERM}">
-                    <span class="step-n">0${t.n}</span>
-                    <span class="step-p mono">${esc(t.period)}</span>
+                <button type="button" class="step ${t.status}" role="tab" data-term="${t.n}" aria-selected="${t.n === TERM}">
+                    <b>${String(t.n).padStart(2, '0')}</b><span>${esc(t.period)}</span>
                 </button>`).join('')}
             </div>
-            <div class="term-panel panel" id="term-panel"></div>
+            <div id="term-panel"></div>
         </div>`;
     renderTerm();
 }
@@ -330,35 +322,28 @@ function renderTerm() {
     const t = DATA.education.terms.find(x => x.n === TERM);
     if (!t) return;
     $('#term-panel').innerHTML = `
-        <div class="term-head">
-            <div>
-                <span class="small-label">${T('stage')} ${t.n} · ${esc(t.period)}</span>
-                <h4>${t.courses.length} ${LANG === 'pt' ? 'disciplinas' : 'courses'}</h4>
-            </div>
-            <span class="badge ${t.status === 'current' ? 'live' : t.status === 'next' ? 'muted' : ''}">${T('st')[t.status]}</span>
+        <div class="curriculum-head">
+            <span class="muted" style="font-size:14px">${T('stage')} ${t.n} · ${esc(t.period)} · ${esc(T('coursesN')(t.courses.length))}</span>
+            <span class="step-status ${t.status}">${T('st')[t.status]}</span>
         </div>
-        <ul class="course-list ${t.status}">
-            ${t.courses.map((c, i) => `<li style="--i:${i}"><span class="mono">${String(i + 1).padStart(2, '0')}</span>${esc(L(c))}</li>`).join('')}
+        <ul class="courses ${t.status}">
+            ${t.courses.map((c, i) => `<li style="--i:${i}"><span>${String(i + 1).padStart(2, '0')}</span>${esc(L(c))}</li>`).join('')}
         </ul>`;
 }
 
 function renderContact() {
-    $('#contact-cards').innerHTML = socialList().map(s => `
-        <a class="c-card" href="${esc(s.href)}" ${s.key !== 'email' ? 'target="_blank" rel="noopener noreferrer"' : ''} data-key="${s.key}" data-copied="${T('copy')}">
-            ${ICON[s.key]}
-            <span><small>${esc(s.label)}</small><strong>${esc(s.value)}</strong></span>
-            <span class="arrow">↗</span>
-        </a>`).join('');
-    $('#term-hints').innerHTML = ['help', 'whoami', 'projects', 'open mackestagios', 'contact']
-        .map(c => `<button type="button" data-cmd="${c}">${c}</button>`).join('');
+    const s = socials();
+    $('#cta-actions').innerHTML = `
+        <a class="btn btn-solid" href="${esc(s[0].href)}" target="_blank" rel="noopener noreferrer">LinkedIn <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <button type="button" class="btn btn-line copy-mail" id="copy-mail" title="${T('copyMail')}">${esc(DATA.profile.email)}</button>
+        <a class="btn btn-line" href="${esc(s[1].href)}" target="_blank" rel="noopener noreferrer">GitHub</a>`;
 }
 
 function renderAll() {
     applyStatic();
     renderHero();
-    renderMetrics();
-    renderAbout();
-    renderExperience();
+    renderBento();
+    renderJobs();
     renderFilters();
     renderProjects();
     renderSkills();
@@ -368,137 +353,87 @@ function renderAll() {
 }
 
 /* =========================================================================
-   Effects: reveal, counters, bars, typed text, clock, tilt, glitch
+   Effects
    ========================================================================= */
 let revealObs;
 function observeReveal() {
-    if (!revealObs) {
-        revealObs = new IntersectionObserver(entries => {
-            entries.forEach(en => {
-                if (!en.isIntersecting) return;
-                const el = en.target;
-                el.classList.add('in');
-                if (el.dataset.count !== undefined) countUp(el);
-                $$('.bar i, .bar em', el).forEach(b => { b.style.width = `${b.dataset.w}%`; });
-                revealObs.unobserve(el);
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    }
+    revealObs ??= new IntersectionObserver(entries => {
+        entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            const el = en.target;
+            el.classList.add('in');
+            if (el.dataset.count !== undefined) countUp(el);
+            $$('.bar i, .bar em', el).forEach(b => { b.style.width = `${b.dataset.w}%`; });
+            revealObs.unobserve(el);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     $$('.reveal:not(.in)').forEach((el, i) => {
-        el.style.transitionDelay = `${Math.min(i % 6, 5) * 60}ms`;
+        el.style.transitionDelay = `${(i % 4) * 70}ms`;
         revealObs.observe(el);
     });
-    // elements already revealed (after a language switch) keep their final state
-    $$('.reveal.in .bar i, .reveal.in .bar em').forEach(b => { b.style.width = `${b.dataset.w}%`; });
 }
 
 function countUp(el) {
     const target = Number(el.dataset.count), num = $('.num', el);
-    if (REDUCE || !num) { if (num) num.textContent = target; return; }
-    const t0 = performance.now(), dur = 1400;
+    if (!num) return;
+    if (REDUCE) { num.textContent = target; return; }
+    const t0 = performance.now(), dur = 1200;
     const step = now => {
-        const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-        num.textContent = Math.round(target * e);
+        const k = Math.min(1, (now - t0) / dur);
+        num.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
         if (k < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
 }
 
-let typedTimer;
-function startTyped() {
-    clearTimeout(typedTimer);
-    const el = $('#typed');
-    const roles = L(DATA.profile.roles);
-    if (REDUCE) { el.textContent = roles[0]; return; }
-    let r = 0, c = 0, del = false;
-    const tick = () => {
-        const word = roles[r];
-        el.textContent = word.slice(0, c);
-        if (!del && c < word.length) { c++; typedTimer = setTimeout(tick, 55); }
-        else if (!del) { del = true; typedTimer = setTimeout(tick, 1700); }
-        else if (c > 0) { c--; typedTimer = setTimeout(tick, 28); }
-        else { del = false; r = (r + 1) % roles.length; typedTimer = setTimeout(tick, 300); }
-    };
-    tick();
-}
-
-function startClock() {
-    const el = $('#clock');
-    const fmt = new Intl.DateTimeFormat('pt-BR', { timeZone: DATA.profile.timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-    const tick = () => { el.textContent = fmt.format(new Date()); };
-    tick();
-    setInterval(tick, 1000);
-}
-
-function bindTilt() {
-    if (REDUCE || !matchMedia('(hover: hover)').matches) return;
-    $$('.proj').forEach(card => {
-        let frame = null, rect = null;
-        card.addEventListener('pointerenter', () => { rect = card.getBoundingClientRect(); });
+function bindSpotlight(root) {
+    if (!HOVER || REDUCE) return;
+    $$('.spot', root).forEach(card => {
         card.addEventListener('pointermove', e => {
-            if (frame) return;
-            frame = requestAnimationFrame(() => {
-                frame = null;
-                const r = rect || card.getBoundingClientRect();
-                const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-                card.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 5}deg) rotateY(${(x - 0.5) * 6}deg) translateY(-4px)`;
-                card.style.setProperty('--mx', `${x * 100}%`);
-                card.style.setProperty('--my', `${y * 100}%`);
-            });
-        });
-        card.addEventListener('pointerleave', () => { rect = null; card.style.transform = ''; });
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+            card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        }, { passive: true });
     });
 }
 
-function glitchLoop() {
-    if (REDUCE) return;
-    setInterval(() => {
-        const g = $$('.glitch');
-        const el = g[Math.floor(Math.random() * g.length)];
-        el.classList.add('zap');
-        setTimeout(() => el.classList.remove('zap'), 900);
-    }, 5200);
-}
-
 /* =========================================================================
-   Navigation
+   Behaviour
    ========================================================================= */
 function bindNav() {
-    const nav = $('#sidenav'), btn = $('#menu-btn');
-    const close = () => { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); };
+    const nav = $('#nav'), links = $('#nav-links'), btn = $('#menu-btn');
+    const onScroll = () => nav.classList.toggle('scrolled', scrollY > 10);
+    onScroll();
+    addEventListener('scroll', onScroll, { passive: true });
+
     btn.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
+        const open = links.classList.toggle('open');
         btn.setAttribute('aria-expanded', String(open));
     });
-    $$('a', nav).forEach(a => a.addEventListener('click', close));
+    $$('a', links).forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }));
 
-    const links = $$('[data-nav]');
-    const obs = new IntersectionObserver(entries => {
+    const anchors = $$('a', links);
+    const io = new IntersectionObserver(entries => {
         entries.forEach(en => {
-            if (en.isIntersecting) links.forEach(l => l.classList.toggle('active', l.dataset.nav === en.target.id));
+            if (en.isIntersecting) anchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${en.target.id}`));
         });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    $$('main > section').forEach(s => obs.observe(s));
+    $$('main > section[id]').forEach(s => io.observe(s));
 
-    $('#lang-btn').addEventListener('click', () => setLang(LANG === 'pt' ? 'en' : 'pt'));
-
-    // pause the hero's CSS loops (rings, caret...) once it scrolls out of view
-    const hero = $('#home');
-    new IntersectionObserver(([en]) => hero.classList.toggle('paused', !en.isIntersecting), { threshold: 0.05 }).observe(hero);
+    $('#lang-btn').addEventListener('click', () => {
+        LANG = LANG === 'pt' ? 'en' : 'pt';
+        store.set('lang', LANG);
+        renderAll();
+    });
+    $('#theme-btn').addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        $('meta[name="theme-color"]').setAttribute('content', next === 'dark' ? '#0B0C0F' : '#FAFAF9');
+        store.set('theme', next);
+    });
 }
 
-function setLang(lang) {
-    LANG = lang;
-    try { localStorage.setItem('lang', lang); } catch { /* ignore */ }
-    renderAll();
-    startTyped();
-    termPrint(`<span class="ok">lang → ${lang}</span>`);
-}
-
-/* =========================================================================
-   Projects: filters + modal
-   ========================================================================= */
-function bindProjects() {
+function bindInteractions() {
     $('#filters').addEventListener('click', e => {
         const b = e.target.closest('.filter');
         if (!b) return;
@@ -510,7 +445,6 @@ function bindProjects() {
         const card = e.target.closest('.proj');
         if (card) openProject(DATA.projects[Number(card.dataset.idx)]);
     });
-    $('#modal').addEventListener('click', e => { if (e.target.closest('[data-close]')) closeModal(); });
     $('#edu').addEventListener('click', e => {
         const b = e.target.closest('.step');
         if (!b) return;
@@ -518,6 +452,12 @@ function bindProjects() {
         $$('.step').forEach(x => x.setAttribute('aria-selected', String(x === b)));
         renderTerm();
     });
+    $('#cta-actions').addEventListener('click', async e => {
+        if (!e.target.closest('#copy-mail')) return;
+        try { await navigator.clipboard.writeText(DATA.profile.email); toast(T('copied')); }
+        catch { location.href = `mailto:${DATA.profile.email}`; }
+    });
+    $('#modal').addEventListener('click', e => { if (e.target.closest('[data-close]')) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#modal').hidden) closeModal(); });
 }
 
@@ -527,17 +467,15 @@ async function openProject(p) {
     const user = DATA.profile.github;
     const link = p.repo ? `https://github.com/${user}/${p.repo}` : p.url;
     $('#modal-title').textContent = L(p.title);
-    $('#modal-path').textContent = p.repo ? `~/github/${user}/${p.repo}` : (p.internal ? '~/internal' : `~/${(p.url || '').replace('https://', '')}`);
+    $('#modal-path').textContent = p.repo ? `github.com/${user}/${p.repo}` : p.internal ? T('internal') : (p.url || '').replace('https://', '');
     const gh = $('#modal-gh');
     gh.hidden = !link;
     if (link) gh.href = link;
 
-    const body = $('#modal-body');
-    body.innerHTML = `
-        <div class="modal-meta">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
+    $('#modal-body').innerHTML = `
+        <div class="tags">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
         <p class="modal-desc">${esc(L(p.desc))}</p>
-        <div class="readme" id="readme">${p.repo ? `<p class="loader-line">${T('readmeLoading')}</p>` : `<p class="dim">${p.internal ? T('internalNote') : ''}</p>`}</div>`;
-
+        <div class="readme" id="readme">${p.repo ? `<p class="loading">${T('readmeLoading')}</p>` : `<p class="muted">${p.internal ? T('internalNote') : ''}</p>`}</div>`;
     $('#modal').hidden = false;
     document.body.classList.add('locked');
     $('.modal-box [data-close]').focus();
@@ -555,10 +493,10 @@ async function openProject(p) {
             if (rel(h)) a.href = `${link}/blob/HEAD/${h.replace(/^\.?\//, '')}`;
             if (!h?.startsWith('#')) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
         });
-        if (md.trim().length < 120) target.insertAdjacentHTML('beforeend', `<p class="dim">${T('readmeShort')}</p>`);
+        if (md.trim().length < 120) target.insertAdjacentHTML('beforeend', `<p class="muted">${T('readmeShort')}</p>`);
     } catch (err) {
         console.warn(err);
-        target.innerHTML = `<p class="dim">${T('readmeFail')} <a href="${esc(link)}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></p>`;
+        target.innerHTML = `<p class="muted">${T('readmeFail')} <a href="${esc(link)}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></p>`;
     }
 }
 
@@ -569,146 +507,31 @@ function closeModal() {
 }
 
 /* =========================================================================
-   Contact: copy email + terminal
-   ========================================================================= */
-function bindContact() {
-    $('#contact-cards').addEventListener('click', async e => {
-        const card = e.target.closest('.c-card[data-key="email"]');
-        if (!card) return;
-        try {
-            await navigator.clipboard.writeText(DATA.profile.email);
-            card.classList.add('copied');
-            setTimeout(() => card.classList.remove('copied'), 1600);
-        } catch { /* clipboard blocked: mailto still opens */ }
-    });
-
-    const form = $('#term-form'), input = $('#term-in');
-    const history = []; let hIdx = 0;
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const cmd = input.value.trim();
-        if (!cmd) return;
-        history.push(cmd); hIdx = history.length;
-        input.value = '';
-        runCmd(cmd);
-    });
-    input.addEventListener('keydown', e => {
-        if (e.key === 'ArrowUp' && hIdx > 0) { input.value = history[--hIdx]; e.preventDefault(); }
-        if (e.key === 'ArrowDown') { hIdx = Math.min(history.length, hIdx + 1); input.value = history[hIdx] || ''; }
-    });
-    $('#term-hints').addEventListener('click', e => {
-        const b = e.target.closest('[data-cmd]');
-        if (b) { runCmd(b.dataset.cmd); input.focus({ preventScroll: true }); }
-    });
-    $('#terminal').addEventListener('click', e => { if (!e.target.closest('a,button')) input.focus({ preventScroll: true }); });
-    termPrint(UI[LANG].term.welcome);
-}
-
-function termPrint(html) {
-    const out = $('#term-out');
-    out.insertAdjacentHTML('beforeend', `<div>${html}</div>`);
-    out.scrollTop = out.scrollHeight;
-}
-
-function runCmd(raw) {
-    const t = UI[LANG].term;
-    const p = DATA.profile;
-    termPrint(`<span class="cmd">${esc(raw)}</span>`);
-    const [cmd, ...args] = raw.toLowerCase().split(/\s+/);
-    const arg = args.join(' ');
-    const pad = s => s.padEnd(26, ' ').replace(/ /g, '&nbsp;');
-
-    switch (cmd) {
-        case 'help':
-            t.help.forEach(([c, d]) => termPrint(`<span class="hl">${pad(esc(c))}</span>${esc(d)}`));
-            break;
-        case 'whoami':
-            termPrint(`<span class="hl">${esc(p.name)}</span> — ${esc(L(p.roles)[0])} · ${esc(p.location)}`);
-            termPrint(esc(L(p.summary)));
-            break;
-        case 'experience': case 'exp':
-            DATA.experience.forEach(j => termPrint(`<span class="hl">${esc(L(j.period))}</span> · ${esc(j.company)} — ${esc(L(j.role))}`));
-            break;
-        case 'projects': case 'ls':
-            DATA.projects.forEach(pr => termPrint(`<span class="hl">${pad(esc(pr.repo || L(pr.title)))}</span>${esc(pr.stack.join(', '))}`));
-            break;
-        case 'skills':
-            DATA.skills.forEach(s => termPrint(`<span class="hl">${esc(L(s.title))}:</span> ${esc(s.items.join(', '))}`));
-            break;
-        case 'education': case 'edu':
-            termPrint(`${esc(DATA.education.institution)} — ${esc(L(DATA.education.degree))}`);
-            DATA.education.terms.filter(t => t.status !== 'next').forEach(t =>
-                termPrint(`<span class="hl">${esc(t.period)}</span> ${t.courses.map(c => esc(L(c))).join(' · ')}`));
-            break;
-        case 'contact':
-            socialList().forEach(s => termPrint(`<span class="hl">${pad(esc(s.label))}</span><a href="${esc(s.href)}" target="_blank" rel="noopener noreferrer">${esc(s.value)}</a>`));
-            break;
-        case 'github': case 'linkedin': case 'email': {
-            const s = socialList().find(x => x.key === cmd);
-            termPrint(`${t.opening} ${esc(s.value)} ...`);
-            window.open(s.href, cmd === 'email' ? '_self' : '_blank', 'noopener');
-            break;
-        }
-        case 'open': case 'cat': {
-            const pr = DATA.projects.find(x => (x.repo || '').toLowerCase() === arg || String(L(x.title)).toLowerCase() === arg)
-                || DATA.projects.find(x => arg && ((x.repo || '').toLowerCase().includes(arg) || String(L(x.title)).toLowerCase().includes(arg)));
-            if (pr) { termPrint(`${t.opening} ${esc(L(pr.title))} ...`); openProject(pr); }
-            else termPrint(`<span class="err">${t.noProject}</span>`);
-            break;
-        }
-        case 'lang':
-            if (arg === 'pt' || arg === 'en') setLang(arg);
-            else termPrint('lang pt | lang en');
-            break;
-        case 'clear': $('#term-out').innerHTML = ''; break;
-        case 'date': termPrint(new Date().toString()); break;
-        case 'sudo':
-            termPrint(`<span class="ok">${t.hire.replace(/\{email\}/g, esc(p.email))}</span>`);
-            break;
-        default:
-            termPrint(`<span class="err">${t.notFound(esc(cmd))}</span>`);
-    }
-}
-
-/* =========================================================================
    Init
    ========================================================================= */
 async function init() {
-    startBackground($('#bg'));
-    const bootDone = boot();
     try {
-        const res = await fetch('data/content.json', { cache: 'no-cache' });
-        DATA = await res.json();
+        DATA = await (await fetch('data/content.json', { cache: 'no-cache' })).json();
     } catch (e) {
         console.error('Failed to load data/content.json', e);
-        $('#boot').classList.add('done');
         return;
     }
-    LANG = initialLang();
+    const saved = store.get('lang');
+    LANG = saved === 'pt' || saved === 'en' ? saved : ((navigator.language || 'pt').toLowerCase().startsWith('pt') ? 'pt' : 'en');
     $('#year').textContent = new Date().getFullYear();
     renderAll();
     bindNav();
-    bindProjects();
-    bindContact();
-    startClock();
-    await bootDone;
-    startTyped();
-    glitchLoop();
+    bindInteractions();
 
-    // GitHub sync (non-blocking): updates dates + repo counter
-    try {
-        REPOS = await getRepos(DATA.profile.github);
-    } catch (e) {
-        console.warn('GitHub unavailable, using local data.', e);
-        GH_FAILED = true;
-    }
+    try { REPOS = await getRepos(DATA.profile.github); }
+    catch (e) { console.warn('GitHub unavailable, using local data.', e); GH_FAILED = true; }
     renderProjects();
     observeReveal();
-    const repoMetric = $('#metrics .metric:last-child');
-    if (REPOS && repoMetric) {
+    const repoCard = $$('#bento [data-count]').at(-1);
+    if (REPOS && repoCard) {
         const n = REPOS.filter(r => !r.fork).length;
-        repoMetric.dataset.count = n;
-        if (repoMetric.classList.contains('in')) $('.num', repoMetric).textContent = n;
+        repoCard.dataset.count = n;
+        if (repoCard.classList.contains('in')) $('.num', repoCard).textContent = n;
     }
 }
 
