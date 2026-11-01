@@ -111,7 +111,7 @@ em { font-family: var(--f-serif); font-style: italic; font-weight: 400; letter-s
 .logo { display: flex; align-items: center; gap: 10px; font: 700 16px var(--f-head); letter-spacing: -.01em; }
 .logo-mark {
     display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; overflow: hidden;
-    border: 1px solid var(--line-strong); flex: none;
+    flex: none; background: #000;
 }
 .logo-img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .nav-links { display: flex; gap: 4px; padding: 4px; border-radius: 999px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 70%, transparent); }
